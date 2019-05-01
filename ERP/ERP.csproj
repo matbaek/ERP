@@ -67,6 +67,12 @@
     <Compile Include="Lager\RawProductWindow.xaml.cs">
       <DependentUpon>RawProductWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowCustomer.xaml.cs">
+      <DependentUpon>WindowCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowLager.xaml.cs">
+      <DependentUpon>WindowLager.xaml</DependentUpon>
+    </Compile>
     <Page Include="Lager\CustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +98,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lager\RawProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowLager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

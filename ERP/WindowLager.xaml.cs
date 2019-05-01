@@ -10,31 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ERP
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WindowLager.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowLager : Window
     {
-        public MainWindow()
+        public WindowLager()
         {
             InitializeComponent();
         }
 
-        private void ButtonLager_Click(object sender, RoutedEventArgs e)
+        private void ButtonShowLager_Click(object sender, RoutedEventArgs e)
         {
-            WindowLager wl = new WindowLager();
-            wl.Show();
-        }
 
-        private void ButtonCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            WindowCustomer wc = new WindowCustomer();
-            wc.Show();
         }
     }
 }
