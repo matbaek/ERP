@@ -12,16 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ERP
+namespace ERP.Customer 
 {
     /// <summary>
-    /// Interaction logic for CustomerWindow.xaml
+    /// Interaction logic for WindowAddCustomer.xaml
     /// </summary>
-    public partial class CustomerWindow : Window
+    public partial class WindowAddCustomer : Window
     {
-        public CustomerWindow()
+        public WindowAddCustomer()
         {
             InitializeComponent();
+        }
+
+        private void ButtonCreateCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

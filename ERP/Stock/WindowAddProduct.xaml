@@ -1,0 +1,21 @@
+﻿<Window x:Class="ERP.Stock.WindowAddProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.Stock"
+        mc:Ignorable="d"
+        Title="WindowAddProduct" Height="310" Width="310"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="label" Content="Opret en vare" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,73,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" Text="Pris" VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="Antal" VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxPackageDate" HorizontalAlignment="Left" Height="23" Margin="10,157,0,0" TextWrapping="Wrap" Text="Pakkedato" VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxExpiration" HorizontalAlignment="Left" Height="23" Margin="10,185,0,0" TextWrapping="Wrap" Text="Udløbsdato" VerticalAlignment="Top" Width="272" />
+        <Button x:Name="ButtonAdd" Content="Opret" HorizontalAlignment="Left" Margin="105,239,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

@@ -42,14 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="Lager\CustomerRepository.cs" />
+    <Compile Include="Customer\CustomerRepository.cs" />
     <Compile Include="DBController.cs" />
-    <Compile Include="Lager\ProductRepository.cs" />
+    <Compile Include="Stock\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Lager\RawProductRepository.cs" />
+    <Compile Include="Stock\RawProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Order\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{bacc2534-34a8-419b-9a57-12de4427c920}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

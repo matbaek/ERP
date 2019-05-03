@@ -1,0 +1,18 @@
+﻿<Page x:Class="ERP.PageMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ERP"
+      mc:Ignorable="d" 
+      Height="500" Width="900"
+      Title="PageMenu">
+
+    <Grid>
+        <Button x:Name="ButtonProduct" Content="Lager" HorizontalAlignment="Left" Margin="255,40,0,0" VerticalAlignment="Top" Width="380" Click="ButtonProduct_Click" Height="40"/>
+        <Button x:Name="ButtonRawProduct" Content="Råvare" HorizontalAlignment="Left" Margin="255,130,0,0" VerticalAlignment="Top" Width="380" Click="ButtonRawProduct_Click" Height="40"/>
+        <Button x:Name="ButtonCustomer" Content="Kunder" HorizontalAlignment="Left" Margin="255,220,0,0" VerticalAlignment="Top" Width="380" Click="ButtonCustomer_Click" Height="40"/>
+        <Button x:Name="ButtonOrder" Content="Ordre" HorizontalAlignment="Left" Margin="255,310,0,0" VerticalAlignment="Top" Width="380" Click="ButtonOrder_Click" Height="40" IsEnabled="false"/>
+        <Button x:Name="ButtonAccounting" Content="Regnskab" HorizontalAlignment="Left" Margin="255,400,0,0" VerticalAlignment="Top" Width="380" Click="ButtonAccounting_Click" Height="40" IsEnabled="false"/>
+    </Grid>
+</Page>

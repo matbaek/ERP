@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ERP
+namespace ERP.Stock
 {
     /// <summary>
-    /// Interaction logic for ProductWindow.xaml
+    /// Interaction logic for WindowAddProduct.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class WindowAddProduct : Window
     {
-        public ProductWindow()
+        public WindowAddProduct()
         {
             InitializeComponent();
         }

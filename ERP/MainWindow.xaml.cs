@@ -23,18 +23,9 @@ namespace ERP
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void ButtonLager_Click(object sender, RoutedEventArgs e)
-        {
-            WindowLager wl = new WindowLager();
-            wl.Show();
-        }
-
-        private void ButtonCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            WindowCustomer wc = new WindowCustomer();
-            wc.Show();
+            PageMenu pm = new PageMenu();
+            testFrame.NavigationService.Navigate(pm);
         }
     }
 }

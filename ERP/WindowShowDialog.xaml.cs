@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace ERP
 {
     /// <summary>
-    /// Interaction logic for WindowCustomer.xaml
+    /// Interaction logic for WindowShowDialog.xaml
     /// </summary>
-    public partial class WindowCustomer : Window
+    public partial class WindowShowDialog : Window
     {
-        public WindowCustomer()
+        public WindowShowDialog()
         {
             InitializeComponent();
+        }
+
+        private void ButtonOK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

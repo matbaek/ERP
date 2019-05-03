@@ -55,25 +55,53 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Lager\CustomerWindow.xaml.cs">
-      <DependentUpon>CustomerWindow.xaml</DependentUpon>
+    <Compile Include="Customer\PageCustomer.xaml.cs">
+      <DependentUpon>PageCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lager\ProcessWindow.xaml.cs">
-      <DependentUpon>ProcessWindow.xaml</DependentUpon>
+    <Compile Include="Customer\WindowAddCustomer.xaml.cs">
+      <DependentUpon>WindowAddCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lager\ProductWindow.xaml.cs">
-      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    <Compile Include="Stock\PageProduct.xaml.cs">
+      <DependentUpon>PageProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lager\RawProductWindow.xaml.cs">
-      <DependentUpon>RawProductWindow.xaml</DependentUpon>
+    <Compile Include="Stock\PageRawProduct.xaml.cs">
+      <DependentUpon>PageRawProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowCustomer.xaml.cs">
-      <DependentUpon>WindowCustomer.xaml</DependentUpon>
+    <Compile Include="Stock\WindowAddProduct.xaml.cs">
+      <DependentUpon>WindowAddProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowLager.xaml.cs">
-      <DependentUpon>WindowLager.xaml</DependentUpon>
+    <Compile Include="Stock\WindowAddRawProduct.xaml.cs">
+      <DependentUpon>WindowAddRawProduct.xaml</DependentUpon>
     </Compile>
-    <Page Include="Lager\CustomerWindow.xaml">
+    <Compile Include="Stock\WindowDeleteRawProduct.xaml.cs">
+      <DependentUpon>WindowDeleteRawProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\WindowEditRawProduct.xaml.cs">
+      <DependentUpon>WindowEditRawProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\WindowSearchRawProduct.xaml.cs">
+      <DependentUpon>WindowSearchRawProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowShowDialog.xaml.cs">
+      <DependentUpon>WindowShowDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Customer\PageCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\WindowAddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\PageProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\PageRawProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\WindowAddProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,28 +117,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Lager\ProcessWindow.xaml">
+    <Page Include="PageMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lager\ProductWindow.xaml">
+    <Page Include="Stock\WindowAddRawProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lager\RawProductWindow.xaml">
+    <Page Include="Stock\WindowDeleteRawProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowCustomer.xaml">
+    <Page Include="Stock\WindowEditRawProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowLager.xaml">
+    <Page Include="Stock\WindowSearchRawProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowShowDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageMenu.xaml.cs">
+      <DependentUpon>PageMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -138,6 +173,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Order\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj">
+      <Project>{b4181c4f-3868-4529-852c-afe2607c22b8}</Project>
+      <Name>Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{bacc2534-34a8-419b-9a57-12de4427c920}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

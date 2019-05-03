@@ -1,0 +1,23 @@
+﻿<Window x:Class="ERP.Stock.WindowEditRawProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.Stock"
+        mc:Ignorable="d"
+        Title="WindowEditRawProduct" Height="310" Width="310"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="LabelEditRawProduct" Content="Rediger Råvare" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="272" >
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Button x:Name="ButtonEdit" Content="Rediger råvare" HorizontalAlignment="Left" Margin="100,240,0,0" VerticalAlignment="Top" Width="82" Click="ButtonEdit_Click"/>
+    </Grid>
+</Window>

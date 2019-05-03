@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Process
+    public class ProductionBatch
     {
         //Property
         public string Name { get; set; }
