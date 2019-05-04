@@ -34,9 +34,9 @@ namespace Domain
 
                 SqlCommand command = new SqlCommand("AddRawProduct", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@RawProductName", RawProductName);
-                command.Parameters.AddWithValue("@RawProductWeight", RawProductWeight);
-                command.Parameters.AddWithValue("@DateOfPurchase", DateOfPurchase);
+                command.Parameters.AddWithValue("@RawProductName", rawProductName);
+                command.Parameters.AddWithValue("@RawProductWeight", rawProductWeight);
+                command.Parameters.AddWithValue("@DateOfPurchase", dateOfPurchase);
 
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -160,7 +160,7 @@ namespace Domain
                         string rawProductName = reader["RawProductName"].ToString();
                         double rawProductWeight = double.Parse(reader["RawProductWeight"].ToString());
                         DateTime dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
-                        rawProduct = new RawProduct(rawProductID, rawProductName, rawProductWeight, dateOfPurchase);
+                        rawProduct = new RawProduct(_rawProductID, rawProductName, rawProductWeight, dateOfPurchase);
                     }
                 }
             }

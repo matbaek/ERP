@@ -9,22 +9,23 @@
       Title="PageProduct">
 
     <Grid>
-        <ListView Margin="10, 10, 10, 40" Name="Products">
+        <ListView Margin="10, 10, 10, 40" Name="Products" SelectionChanged="Products_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
-                    <GridViewColumn Header="Vægt" Width="50" DisplayMemberBinding="{Binding Path=Weight}" />
-                    <GridViewColumn Header="Pris" Width="50" DisplayMemberBinding="{Binding Path=Price}" />
-                    <GridViewColumn Header="Antal" Width="50" DisplayMemberBinding="{Binding Path=Amount}" />
-                    <GridViewColumn Header="Pakkedato" Width="130" DisplayMemberBinding="{Binding Path=PackingDate}" />
-                    <GridViewColumn Header="Udløbsdato" Width="130" DisplayMemberBinding="{Binding Path=ExpirationDate}" />
+                    <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=ProductName}" />
+                    <GridViewColumn Header="Vægt" Width="50" DisplayMemberBinding="{Binding Path=ProductWeight}" />
+                    <GridViewColumn Header="Pris" Width="50" DisplayMemberBinding="{Binding Path=ProductPrice}" />
+                    <GridViewColumn Header="Antal" Width="50" DisplayMemberBinding="{Binding Path=ProductAmount}" />
+                    <GridViewColumn Header="Pakkedato" Width="130" DisplayMemberBinding="{Binding Path=DateOfPackaging}" />
+                    <GridViewColumn Header="Udløbsdato" Width="130" DisplayMemberBinding="{Binding Path=DateOfExpiration}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ButtonSearch" Content="Søg efter vare" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
-        <Button x:Name="ButtonAddProduct" Content="Tilføj vare" HorizontalAlignment="Left" Margin="140,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddProduct_Click"/>
-        <Button x:Name="ButtonEditProduct" Content="Rediger vare" HorizontalAlignment="Left" Margin="270,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEditProduct_Click"/>
-        <Button x:Name="ButtonDeleteProduct" Content="Slet vare" HorizontalAlignment="Left" Margin="400,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDeleteProduct_Click"/>
+        <Button x:Name="ButtonSearch" Content="Søg efter vare" HorizontalAlignment="Left" Margin="136,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Button x:Name="ButtonAddProduct" Content="Tilføj vare" HorizontalAlignment="Left" Margin="266,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddProduct_Click"/>
+        <Button x:Name="ButtonEditProduct" Content="Rediger vare" HorizontalAlignment="Left" Margin="398,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEditProduct_Click"/>
+        <Button x:Name="ButtonDeleteProduct" Content="Slet vare" HorizontalAlignment="Left" Margin="530,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDeleteProduct_Click"/>
+        <Button x:Name="ButtonReset" Content="Nulstil" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonReset_Click"/>
         <Button x:Name="ButtonMenu" Content="Hovedmenu" HorizontalAlignment="Left" Margin="790,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonMenu_Click"/>
     </Grid>
 </Page>

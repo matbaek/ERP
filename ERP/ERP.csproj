@@ -73,11 +73,20 @@
     <Compile Include="Stock\WindowAddRawProduct.xaml.cs">
       <DependentUpon>WindowAddRawProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stock\WindowDeleteProduct.xaml.cs">
+      <DependentUpon>WindowDeleteProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\WindowDeleteRawProduct.xaml.cs">
       <DependentUpon>WindowDeleteRawProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stock\WindowEditProduct.xaml.cs">
+      <DependentUpon>WindowEditProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\WindowEditRawProduct.xaml.cs">
       <DependentUpon>WindowEditRawProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\WindowSearchProduct.xaml.cs">
+      <DependentUpon>WindowSearchProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stock\WindowSearchRawProduct.xaml.cs">
       <DependentUpon>WindowSearchRawProduct.xaml</DependentUpon>
@@ -125,13 +134,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Stock\WindowDeleteProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Stock\WindowDeleteRawProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Stock\WindowEditProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Stock\WindowEditRawProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock\WindowSearchProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Stock\WindowSearchRawProduct.xaml">
       <SubType>Designer</SubType>

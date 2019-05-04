@@ -1,26 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using Application;
 using Domain;
-
 
 namespace ERP.Stock
 {
     /// <summary>
-    /// Interaction logic for WindowAddProduct.xaml
+    /// Interaction logic for WindowEditProduct.xaml
     /// </summary>
-    public partial class WindowAddProduct : Window
+    public partial class WindowEditProduct : Window
     {
         private ProductRepository productRepository = new ProductRepository();
-        public WindowAddProduct()
+        private Product product = new Product();
+
+        public WindowEditProduct(int productID)
         {
+            product = productRepository.DisplayProduct(productID);
             InitializeComponent();
+            TextBoxName.Text = product.ProductName;
+            TextBoxWeight.Text = product.ProductWeight.ToString();
+            TextBoxPrice.Text = product.ProductPrice.ToString();
+            TextBoxAmount.Text = product.ProductAmount.ToString();
+            TextBoxDateOfPackaging.Text = product.DateOfPackaging.ToString();
+            TextBoxDateOfExpiration.Text = product.DateOfExpiration.ToString();
+
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            Product product = new Product();
             WindowShowDialog wsd = new WindowShowDialog();
             product.ProductName = TextBoxName.Text.ToString();
 
@@ -32,20 +50,18 @@ namespace ERP.Stock
                 product.DateOfPackaging = DateTime.Parse(TextBoxDateOfPackaging.Text);
                 product.DateOfExpiration = DateTime.Parse(TextBoxDateOfExpiration.Text);
 
-                productRepository.AddProduct(product);
-                wsd.LabelShowDialog.Content = "Varen blev tilføjet";
+                productRepository.EditProduct(product);
+
+                wsd.LabelShowDialog.Content = "Varen blev opdateret";
                 wsd.ShowDialog();
 
                 this.Close();
             }
             else
             {
-                wsd.LabelShowDialog.Content = "Der var en fejl i 'Vægt' eller 'Indkøbsdato'";
+                wsd.LabelShowDialog.Content = "Der var en fejl i lidt af hvert xd";
                 wsd.ShowDialog();
             }
-
-
-
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
