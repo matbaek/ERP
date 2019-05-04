@@ -9,10 +9,10 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LabelEditProduct" Content="Rediger vare" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,73,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" Text="Pris" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="Antal" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,73,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" Text="Pris" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="Antal" VerticalAlignment="Top" Width="272"/>
         <DatePicker x:Name="TextBoxDateOfPackaging" Height="25" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="272" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">

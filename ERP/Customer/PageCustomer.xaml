@@ -9,22 +9,23 @@
       Title="PageCustomer">
 
     <Grid>
-        <ListView Margin="10, 10, 10, 40" Name="Customers">
+        <ListView Margin="10, 10, 10, 40" Name="Customers" SelectionChanged="Customers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=CompanyName}" />
                     <GridViewColumn Header="Kontakt person" Width="200" DisplayMemberBinding="{Binding Path=ContactPerson}" />
                     <GridViewColumn Header="Adresse" Width="130" DisplayMemberBinding="{Binding Path=CustomerAddress}" />
                     <GridViewColumn Header="Telefonnummer" Width="90" DisplayMemberBinding="{Binding Path=CustomerTelephone}" />
-                    <GridViewColumn Header="Postnummer" Width="75" DisplayMemberBinding="{Binding Path=Zip}" />
-                    <GridViewColumn Header="By" Width="80" DisplayMemberBinding="{Binding Path=Town}" />
+                    <GridViewColumn Header="Postnummer" Width="75" DisplayMemberBinding="{Binding Path=CustomerZip}" />
+                    <GridViewColumn Header="By" Width="80" DisplayMemberBinding="{Binding Path=CustomerTown}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ButtonSearch" Content="Søg efter kunde" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
-        <Button x:Name="ButtonAddCustomer" Content="Opret kunde" HorizontalAlignment="Left" Margin="140,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddRawProduct_Click"/>
-        <Button x:Name="ButtonEditCustomer" Content="Rediger kunde" HorizontalAlignment="Left" Margin="270,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEditRawProduct_Click"/>
-        <Button x:Name="ButtonDeleteCustomer" Content="Slet kunde" HorizontalAlignment="Left" Margin="400,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDeleteRawProduct_Click"/>
+        <Button x:Name="ButtonSearch" Content="Søg efter kunde" HorizontalAlignment="Left" Margin="136,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Button x:Name="ButtonAddProduct" Content="Tilføj kunde" HorizontalAlignment="Left" Margin="266,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddCustomer_Click"/>
+        <Button x:Name="ButtonEditProduct" Content="Rediger kunde" HorizontalAlignment="Left" Margin="398,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEditCustomer_Click"/>
+        <Button x:Name="ButtonDeleteProduct" Content="Slet kunde" HorizontalAlignment="Left" Margin="530,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDeleteCustomer_Click"/>
+        <Button x:Name="ButtonReset" Content="Nulstil" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonReset_Click"/>
         <Button x:Name="ButtonMenu" Content="Hovedmenu" HorizontalAlignment="Left" Margin="790,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonMenu_Click"/>
     </Grid>
 </Page>

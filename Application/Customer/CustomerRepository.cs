@@ -13,19 +13,19 @@ namespace Application
         private Customer customer = new Customer();
 
         //Metods
-        public bool AddCustomer(string companyName, string productOwner, string address, string zip, string town, string telephone)
+        public void AddCustomer(Customer customer)
         {
-            return false;
+            customer.AddCustomer(customer.CompanyName, customer.ContactPerson, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
         }
 
-        public bool EditCustomer(string companyName, string productOwner, string address, string zip, string town, string telephone)
+        public void EditCustomer(Customer customer)
         {
-            return false;
+            customer.EditCustomer(customer.CustomerID, customer.CompanyName, customer.ContactPerson, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
         }
 
-        public bool DeleteCustomer()
+        public void DeleteCustomer(int customerID)
         {
-            return false;
+            customer.DeleteCustomer(customerID);
         }
 
         public List<Customer> DisplayCustomers()
@@ -33,9 +33,14 @@ namespace Application
             return customers = customer.GetCustomers();
         }
 
-        public bool DisplayCustomer()
+        public List<Customer> DisplaySpecificCustomers(Customer customer)
         {
-            return false;
+            return customers = customer.GetSpecificCustomers(customer.CompanyName, customer.ContactPerson, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
+        }
+
+        public Customer DisplayCustomer(int customerID)
+        {
+            return customer.GetCustomer(customerID);
         }
     }
 }

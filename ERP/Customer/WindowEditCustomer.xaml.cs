@@ -13,27 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Domain;
 using Application;
-    
-namespace ERP.Customer 
+
+namespace ERP.Customer
 {
     /// <summary>
-    /// Interaction logic for WindowAddCustomer.xaml
+    /// Interaction logic for WindowEditCustomer.xaml
     /// </summary>
-    public partial class WindowAddCustomer : Window
+    public partial class WindowEditCustomer : Window
     {
         private CustomerRepository customerRepository = new CustomerRepository();
-        public WindowAddCustomer()
+        private Domain.Customer customer = new Domain.Customer();
+        public WindowEditCustomer(int customerID)
         {
+            customer = customerRepository.DisplayCustomer(customerID);
             InitializeComponent();
+            TextBoxCompanyName.Text = customer.CompanyName;
+            TextBoxContactPerson.Text = customer.ContactPerson.ToString();
+            TextBoxCustomerAddress.Text = customer.CustomerAddress.ToString();
+            TextBoxCustomerTelephone.Text = customer.CustomerTelephone.ToString();
+            TextBoxCustomerZip.Text = customer.CustomerZip.ToString();
+            TextBoxCustomerTown.Text = customer.CustomerTown.ToString();
         }
 
-        private void ButtonCreateCustomer_Click(object sender, RoutedEventArgs e)
+        private void ButtonEditCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Domain.Customer customer = new Domain.Customer();
             WindowShowDialog wsd = new WindowShowDialog();
-            customer.CompanyName = TextBoxCompanyName.Text.ToString();
 
-            if (TextBoxContactPerson != null && TextBoxCustomerAddress != null && TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTelephone != null)
+            if (TextBoxContactPerson != null && TextBoxCustomerAddress != null && TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTown != null)
             {
                 customer.CompanyName = TextBoxCompanyName.Text;
                 customer.ContactPerson = TextBoxContactPerson.Text;
@@ -42,24 +48,19 @@ namespace ERP.Customer
                 customer.CustomerZip = TextBoxCustomerZip.Text;
                 customer.CustomerTown = TextBoxCustomerTown.Text;
 
-                customerRepository.AddCustomer(customer);
-                wsd.LabelShowDialog.Content = "Kunden blev tilføjet";
+                customerRepository.EditCustomer(customer);
+
+                wsd.LabelShowDialog.Content = "Kunden blev opdateret";
                 wsd.ShowDialog();
 
                 this.Close();
             }
             else
             {
-                wsd.LabelShowDialog.Content = "Muligvis tommefelter";
+                wsd.LabelShowDialog.Content = "Der var en fejl i opdateringen af kunden";
                 wsd.ShowDialog();
             }
 
-        }
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = string.Empty;
         }
     }
 }

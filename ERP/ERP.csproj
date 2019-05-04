@@ -61,6 +61,9 @@
     <Compile Include="Customer\WindowAddCustomer.xaml.cs">
       <DependentUpon>WindowAddCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Customer\WindowEditCustomer.xaml.cs">
+      <DependentUpon>WindowEditCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\PageProduct.xaml.cs">
       <DependentUpon>PageProduct.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,12 @@
     <Compile Include="Stock\WindowSearchRawProduct.xaml.cs">
       <DependentUpon>WindowSearchRawProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Customer\WindowDeleteCustomer.xaml.cs">
+      <DependentUpon>WindowDeleteCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\WindowSearchCustomer.xaml.cs">
+      <DependentUpon>WindowSearchCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowShowDialog.xaml.cs">
       <DependentUpon>WindowShowDialog.xaml</DependentUpon>
     </Compile>
@@ -99,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Customer\WindowAddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\WindowEditCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +168,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Stock\WindowSearchRawProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\WindowDeleteCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\WindowSearchCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
