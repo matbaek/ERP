@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Application;
@@ -13,9 +14,18 @@ namespace ERP.Stock
     public partial class WindowAddProduct : Window
     {
         private ProductRepository productRepository = new ProductRepository();
+        private RawProductRepository rawProductRepository = new RawProductRepository();
+        private List<RawProduct> rawProducts = new List<RawProduct>();
+
         public WindowAddProduct()
         {
             InitializeComponent();
+            rawProducts = rawProductRepository.DisplayRawProducts();
+            for (int i = 0; i < rawProducts.Count; i++)
+            {
+                ComboBoxRawProduct.Items.Add($"{rawProducts[i].RawProductName} ({rawProducts[i].RawProductWeight} kg)");
+                ComboBoxRawProduct.Name = $"{rawProducts[i].RawProductID}";
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -26,9 +36,9 @@ namespace ERP.Stock
 
             if (double.TryParse(TextBoxWeight.Text, out double resultWeight) && double.TryParse(TextBoxPrice.Text, out double resultPrice) && double.TryParse(TextBoxAmount.Text, out double resultAmount) && TextBoxDateOfPackaging.SelectedDate != null && TextBoxDateOfExpiration.SelectedDate != null)
             {
-                product.ProductWeight = double.Parse(TextBoxWeight.Text);
-                product.ProductPrice = double.Parse(TextBoxPrice.Text);
-                product.ProductAmount = double.Parse(TextBoxAmount.Text);
+                product.ProductWeight = resultWeight;
+                product.ProductPrice = resultPrice;
+                product.ProductAmount = resultAmount;
                 product.DateOfPackaging = DateTime.Parse(TextBoxDateOfPackaging.Text);
                 product.DateOfExpiration = DateTime.Parse(TextBoxDateOfExpiration.Text);
 
@@ -52,6 +62,13 @@ namespace ERP.Stock
         {
             TextBox textBox = (TextBox)sender;
             textBox.Text = string.Empty;
+        }
+
+        private void ComboBoxRawProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int rawProductID = 1;
+            TextBoxWeight.Text = rawProducts[rawProductID].RawProductName;
+
         }
     }
 }
