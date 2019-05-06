@@ -101,10 +101,5 @@ namespace ERP.Customer
                 wsd.ShowDialog();
             }
         }
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = string.Empty;
-        }
     }
 }

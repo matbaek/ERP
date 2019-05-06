@@ -24,7 +24,6 @@ namespace ERP.Stock
             for (int i = 0; i < rawProducts.Count; i++)
             {
                 ComboBoxRawProduct.Items.Add($"{rawProducts[i].RawProductName} ({rawProducts[i].RawProductWeight} kg)");
-                ComboBoxRawProduct.Name = $"{rawProducts[i].RawProductID}";
             }
         }
 
@@ -53,22 +52,18 @@ namespace ERP.Stock
                 wsd.LabelShowDialog.Content = "Der var en fejl i 'Vægt' eller 'Indkøbsdato'";
                 wsd.ShowDialog();
             }
-
-
-
-        }
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = string.Empty;
         }
 
         private void ComboBoxRawProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int rawProductID = 1;
-            TextBoxWeight.Text = rawProducts[rawProductID].RawProductName;
+            TextBoxName.Width = 181;
+            Loss.Visibility = Visibility.Visible;
+            TextBoxLoss.Visibility = Visibility.Visible;
+            TextBoxLoss.Text = "20";
 
+            string[] comboBoxRawProductWords = ComboBoxRawProduct.SelectedItem.ToString().Split('(');
+            TextBoxName.Text = comboBoxRawProductWords[0].Substring(0, comboBoxRawProductWords[0].Length - 1);
+            TextBoxWeight.Text = comboBoxRawProductWords[1].Substring(0, comboBoxRawProductWords[1].Length - 4);
         }
     }
 }

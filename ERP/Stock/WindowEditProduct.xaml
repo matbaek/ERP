@@ -5,28 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Stock"
         mc:Ignorable="d"
-        Title="WindowEditProduct" Height="310" Width="310"
+        Title="WindowEditProduct" Height="294" Width="310"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label x:Name="LabelEditProduct" Content="Rediger vare" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,73,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" Text="Pris" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="Antal" VerticalAlignment="Top" Width="272"/>
-        <DatePicker x:Name="TextBoxDateOfPackaging" Height="25" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="272" >
+        <Label x:Name="LabelEditProduct" Content="Rediger vare" HorizontalAlignment="Left" Margin="103,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Navn" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273"/>
+        <Label Content="Vægt i ?" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Pris" HorizontalAlignment="Left" Margin="102,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Antal" HorizontalAlignment="Left" Margin="194,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="102,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="194,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <Label Content="Pakkedato" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Udløbsdato" HorizontalAlignment="Left" Margin="149,146,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <DatePicker x:Name="TextBoxDateOfPackaging" Height="25" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="134" >
             <DatePicker.Resources>
-                <Style TargetType="DatePickerTextBox">
+                <Style TargetType="{x:Type DatePickerTextBox}">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <DatePicker x:Name="TextBoxDateOfExpiration" Height="25" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Width="272" >
+        <DatePicker x:Name="TextBoxDateOfExpiration" Height="25" HorizontalAlignment="Left" Margin="149,172,0,0" VerticalAlignment="Top" Width="134" >
             <DatePicker.Resources>
-                <Style TargetType="DatePickerTextBox">
+                <Style TargetType="{x:Type DatePickerTextBox}">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonEdit" Content="Rediger vare" HorizontalAlignment="Left" Margin="100,240,0,0" VerticalAlignment="Top" Width="82" Click="ButtonEdit_Click"/>
+        <Button x:Name="ButtonEdit" Content="Rediger vare" HorizontalAlignment="Left" Margin="96,224,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEdit_Click"/>
     </Grid>
 </Window>

@@ -12,12 +12,12 @@
         <ListView Margin="10, 10, 10, 40" Name="Products" SelectionChanged="Products_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=ProductName}" />
-                    <GridViewColumn Header="Vægt" Width="50" DisplayMemberBinding="{Binding Path=ProductWeight}" />
-                    <GridViewColumn Header="Pris" Width="50" DisplayMemberBinding="{Binding Path=ProductPrice}" />
-                    <GridViewColumn Header="Antal" Width="50" DisplayMemberBinding="{Binding Path=ProductAmount}" />
-                    <GridViewColumn Header="Pakkedato" Width="130" DisplayMemberBinding="{Binding Path=DateOfPackaging}" />
-                    <GridViewColumn Header="Udløbsdato" Width="130" DisplayMemberBinding="{Binding Path=DateOfExpiration}" />
+                    <GridViewColumn Header="Navn" Width="300" DisplayMemberBinding="{Binding Path=ProductName}" />
+                    <GridViewColumn Header="Vægt" Width="60" DisplayMemberBinding="{Binding Path=ProductWeight}" />
+                    <GridViewColumn Header="Pris" Width="60" DisplayMemberBinding="{Binding Path=ProductPrice}" />
+                    <GridViewColumn Header="Antal" Width="60" DisplayMemberBinding="{Binding Path=ProductAmount}" />
+                    <GridViewColumn Header="Pakkedato" Width="75" DisplayMemberBinding="{Binding Path=DateOfPackaging, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Udløbsdato" Width="75" DisplayMemberBinding="{Binding Path=DateOfExpiration, StringFormat={}{0:dd/MM/yyyy}}" />
                 </GridView>
             </ListView.View>
         </ListView>

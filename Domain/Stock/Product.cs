@@ -181,8 +181,8 @@ namespace Domain
                         int _productID = int.Parse(reader["ProductID"].ToString());
                         string productName = reader["ProductName"].ToString();
                         double productWeight = double.Parse(reader["ProductWeight"].ToString());
-                        double productPrice = double.Parse(reader["ProductWeight"].ToString());
-                        double productAmount = double.Parse(reader["ProductWeight"].ToString());
+                        double productPrice = double.Parse(reader["ProductPrice"].ToString());
+                        double productAmount = double.Parse(reader["ProductAmount"].ToString());
                         DateTime dateOfPackaging = DateTime.Parse(reader["DateOfPackaging"].ToString());
                         DateTime dateOfExpiration = DateTime.Parse(reader["DateOfExpiration"].ToString());
                         product = new Product(_productID, productName, productWeight, productPrice, productAmount, dateOfPackaging, dateOfExpiration);

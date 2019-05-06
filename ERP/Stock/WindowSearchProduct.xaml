@@ -5,28 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Stock"
         mc:Ignorable="d"
-        Title="WindowSearchProduct" Height="310" Width="310"
+        Title="WindowSearchProduct" Height="292" Width="310"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label x:Name="LabelSearchProduct" Content="Søg efter Råvare" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,45,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,73,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="10,101,0,0" TextWrapping="Wrap" Text="Pris" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="Antal" VerticalAlignment="Top" Width="272" GotFocus="TextBox_GotFocus"/>
-        <DatePicker x:Name="TextBoxDateOfPackaging" Height="25" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="272" >
+        <Label x:Name="LabelSearchProduct" Content="Søg efter Vare" HorizontalAlignment="Left" Margin="103,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Navn" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label x:Name="Loss" Content="Tab i procent" HorizontalAlignment="Left" Margin="194,74,0,0" VerticalAlignment="Top" Padding="0,5,5,5" Visibility="Hidden"/>
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273"/>
+        <TextBox x:Name="TextBoxLoss" HorizontalAlignment="Left" Height="23" Margin="194,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+        <Label Content="Vægt i ?" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Pris" HorizontalAlignment="Left" Margin="102,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Antal" HorizontalAlignment="Left" Margin="194,97,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Height="23" Margin="102,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Height="23" Margin="194,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89"/>
+        <Label Content="Pakkedato" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Udløbsdato" HorizontalAlignment="Left" Margin="149,146,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <DatePicker x:Name="TextBoxDateOfPackaging" Height="25" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="134" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <DatePicker x:Name="TextBoxDateOfExpiration" Height="25" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Width="272" >
+        <DatePicker x:Name="TextBoxDateOfExpiration" Height="25" HorizontalAlignment="Left" Margin="149,172,0,0" VerticalAlignment="Top" Width="134" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonSearch" Content="Søg efter vare" HorizontalAlignment="Left" Margin="91,238,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Button x:Name="ButtonSearch" Content="Søg efter vare" HorizontalAlignment="Left" Margin="96,224,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
     </Grid>
 </Window>

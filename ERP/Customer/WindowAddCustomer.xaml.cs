@@ -55,11 +55,5 @@ namespace ERP.Customer
             }
 
         }
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Text = string.Empty;
-        }
     }
 }

@@ -14,7 +14,7 @@
                 <GridView>
                     <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=RawProductName}" />
                     <GridViewColumn Header="Vægt" Width="50" DisplayMemberBinding="{Binding Path=RawProductWeight}" />
-                    <GridViewColumn Header="Indkøbsdato" Width="150" DisplayMemberBinding="{Binding Path=DateOfPurchase}" />
+                    <GridViewColumn Header="Indkøbsdato" Width="150" DisplayMemberBinding="{Binding Path=DateOfPurchase, StringFormat={}{0:dd/MM/yyyy}}" />
                 </GridView>
             </ListView.View>
         </ListView>
