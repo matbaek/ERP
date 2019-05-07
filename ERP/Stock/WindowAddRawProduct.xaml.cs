@@ -41,5 +41,10 @@ namespace ERP.Stock
                 wsd.ShowDialog();
             }
         }
+
+        private void TextBoxWeight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
