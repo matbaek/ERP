@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="535" Width="920"
+        Title="ERP" Height="535" Width="920"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,2,0" Height="500" VerticalAlignment="Top">
         <Frame x:Name="testFrame" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500"  Width="910" NavigationUIVisibility="Hidden"/>

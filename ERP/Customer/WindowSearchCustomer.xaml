@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP"
         mc:Ignorable="d"
-        Title="WindowSearchCustomer" Height="310" Width="310" WindowStartupLocation="CenterScreen">
+        Title="Søg efter kunde" Height="310" Width="310" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Søg efter kunde" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxCompanyName" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" Text="Firma navn" VerticalAlignment="Top" Width="272"/>

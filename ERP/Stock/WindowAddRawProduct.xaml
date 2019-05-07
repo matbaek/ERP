@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Stock"
         mc:Ignorable="d"
-        Title="WindowAddRawProduct" Height="310" Width="310"
+        Title="Opret råvare" Height="310" Width="310"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LabelAddRawProduct" Content="Opret Råvare" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top"/>
