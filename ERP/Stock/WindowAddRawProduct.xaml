@@ -9,11 +9,11 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LabelAddRawProduct" Content="Opret råvare" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Vægt" Margin="208,32,50,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
-        <Label Content="Navn" Margin="50,32,208,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Vægt" Margin="160,34,98,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Navn" Margin="10,32,248,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <TextBox x:Name="TextBoxName" Height="23" Margin="10,58,160,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxWeight" Height="23" Margin="160,58,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="LabelDateOfPurchase" Content="Dato" Margin="129,91,134,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.316,0.436"/>
+        <Label x:Name="LabelDateOfPurchase" Content="Dato" Margin="84,91,179,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.316,0.436"/>
         <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" Margin="84,117,84,0" VerticalAlignment="Top" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
