@@ -23,12 +23,16 @@ namespace ERP.Stock
     public partial class PageProduct : Page
     {
         private ProductRepository productRepository = new ProductRepository();
-        private int productID = 0;
-        private string productName = string.Empty;
+        private Product product;
         public PageProduct()
         {
             InitializeComponent();
             WindowSearchProduct.eventSendList += WindowsSearchProduct_eventSendList;
+            Update();
+        }
+
+        private void ButtonReset_Click(object sender, RoutedEventArgs e)
+        {
             Update();
         }
 
@@ -47,9 +51,9 @@ namespace ERP.Stock
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (productID != 0)
+            if (product.ProductID != 0)
             {
-                WindowEditProduct wep = new WindowEditProduct(productID);
+                WindowEditProduct wep = new WindowEditProduct(product);
                 wep.ShowDialog();
                 Update();
             }
@@ -63,9 +67,9 @@ namespace ERP.Stock
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (productID != 0)
+            if (product.ProductID != 0)
             {
-                WindowDeleteProduct wdp = new WindowDeleteProduct(productID, productName);
+                WindowDeleteProduct wdp = new WindowDeleteProduct(product);
                 wdp.ShowDialog();
                 Update();
             }
@@ -77,35 +81,29 @@ namespace ERP.Stock
             }
         }
 
-        private void Update()
-        {
-            List<Product> items = productRepository.DisplayProducts();
-            Products.ItemsSource = items;
-        }
-
         private void ButtonMenu_Click(object sender, RoutedEventArgs e)
         {
             PageMenu pm = new PageMenu();
             this.NavigationService.Navigate(pm);
         }
 
+        private void Update()
+        {
+            List<Product> items = productRepository.DisplayProducts();
+            Products.ItemsSource = items;
+        }
+
         private void Products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((Product)Products.SelectedItem) != null)
             {
-                productID = ((Product)Products.SelectedItem).ProductID;
-                productName = ((Product)Products.SelectedItem).ProductName;
+                product = ((Product)Products.SelectedItem);
             }
         }
 
         void WindowsSearchProduct_eventSendList(List<Product> items)
         {
             Products.ItemsSource = items;
-        }
-
-        private void ButtonReset_Click(object sender, RoutedEventArgs e)
-        {
-            Update();
         }
     }
 }

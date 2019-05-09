@@ -64,6 +64,9 @@
     <Compile Include="Customer\WindowEditCustomer.xaml.cs">
       <DependentUpon>WindowEditCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Orders\PageOrder.xaml.cs">
+      <DependentUpon>PageOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\PageProduct.xaml.cs">
       <DependentUpon>PageProduct.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Customer\WindowEditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\PageOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,9 +220,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj">
       <Project>{b4181c4f-3868-4529-852c-afe2607c22b8}</Project>

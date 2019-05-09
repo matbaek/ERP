@@ -169,7 +169,7 @@ namespace Domain
 
                 SqlCommand command = new SqlCommand("ShowCustomer", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@customerID", customerID);
+                command.Parameters.AddWithValue("@CustomerID", customerID);
 
                 SqlDataReader reader = command.ExecuteReader();
 

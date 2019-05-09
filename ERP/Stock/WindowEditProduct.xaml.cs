@@ -24,9 +24,8 @@ namespace ERP.Stock
         private ProductRepository productRepository = new ProductRepository();
         private Product product = new Product();
 
-        public WindowEditProduct(int productID)
+        public WindowEditProduct(Product product)
         {
-            product = productRepository.DisplayProduct(productID);
             InitializeComponent();
             TextBoxName.Text = product.ProductName;
             TextBoxWeight.Text = product.ProductWeight.ToString();

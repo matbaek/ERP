@@ -1,0 +1,29 @@
+﻿<Page x:Class="ERP.Orders.PageOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ERP.Orders"
+      mc:Ignorable="d" 
+      Height="500" Width="900"
+      Title="PageOrder">
+
+    <Grid>
+        <ListView Margin="10, 10, 10, 40" Name="Orders" SelectionChanged="Orders_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Ordernummer" Width="90" DisplayMemberBinding="{Binding Path=OrderID}" />
+                    <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=CustomerID}" />
+                    <GridViewColumn Header="Købsdato" Width="100" DisplayMemberBinding="{Binding Path=DateOfPurchase, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Samlet antal" Width="75" DisplayMemberBinding="{Binding Path=TotalPrice}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButtonSearch" Content="Søg efter order" HorizontalAlignment="Left" Margin="136,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Button x:Name="ButtonAddOrder" Content="Tilføj order" HorizontalAlignment="Left" Margin="266,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddOrder_Click"/>
+        <Button x:Name="ButtonEditOrder" Content="Rediger order" HorizontalAlignment="Left" Margin="398,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonEditOrder_Click"/>
+        <Button x:Name="ButtonDeleteOrder" Content="Slet order" HorizontalAlignment="Left" Margin="530,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonDeleteOrder_Click"/>
+        <Button x:Name="ButtonReset" Content="Nulstil" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonReset_Click"/>
+        <Button x:Name="ButtonMenu" Content="Hovedmenu" HorizontalAlignment="Left" Margin="790,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonMenu_Click"/>
+    </Grid>
+</Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,8 @@ namespace ERP
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            Orders.PageOrder po = new Orders.PageOrder();
+            this.NavigationService.Navigate(po);
         }
 
         private void ButtonAccounting_Click(object sender, RoutedEventArgs e)

@@ -22,17 +22,17 @@ namespace ERP.Stock
     public partial class WindowDeleteProduct : Window
     {
         private ProductRepository productRepository = new ProductRepository();
-        private int productID;
-        public WindowDeleteProduct(int productID, string productName)
+        private Product product;
+        public WindowDeleteProduct(Product product)
         {
             InitializeComponent();
-            this.productID = productID;
-            LabelDeleteProduct.Content = $"Er du sikker på at du vil slette '{productName}'?";
+            this.product = product;
+            LabelDeleteProduct.Content = $"Er du sikker på at du vil slette '{product.ProductName}'?";
         }
 
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
         {
-            productRepository.DeleteProduct(productID);
+            productRepository.DeleteProduct(product.ProductID);
             this.Close();
         }
 
