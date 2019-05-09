@@ -27,6 +27,7 @@ namespace ERP.Orders
         public PageOrder()
         {
             InitializeComponent();
+            Update();
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
@@ -36,7 +37,9 @@ namespace ERP.Orders
 
         private void ButtonAddOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowAddOrder wao =  new WindowAddOrder();
+            wao.ShowDialog();
+            Update();
         }
 
         private void ButtonEditOrder_Click(object sender, RoutedEventArgs e)
