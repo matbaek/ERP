@@ -27,7 +27,7 @@ namespace ERP.Orders
         public PageOrder()
         {
             InitializeComponent();
-            Update();
+            Update(); 
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
