@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Application;
@@ -11,20 +12,26 @@ namespace ERP.Orders
     /// </summary>
     public partial class WindowAddOrder : Window
     {
+        private ProductRepository productRepository = new ProductRepository();
         private OrderRepository orderRepository = new OrderRepository();
+        private List<Product> products = new List<Product>();
         public WindowAddOrder()
         {
             InitializeComponent();
+            products.Add(new Product(99, "Danikkelias", 120, 999, 23, DateTime.Now, DateTime.Now));
+            WindowPickProduct.eventSendList += WindowPickProduct_eventSendList;
+            WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
+           
         }
+
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Order order = new Order();
             WindowShowDialog wsd = new WindowShowDialog();
 
-            if(int.TryParse(TextBoxCustomerId.Text, out int resultId) && double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
+            if(double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
             {
-                order.CustomerID = int.Parse(TextBoxCustomerId.Text);
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
                 orderRepository.AddOrder(order);
@@ -36,7 +43,7 @@ namespace ERP.Orders
             }
             else
             {
-                wsd.LabelShowDialog.Content = "Der var en fejl i 'ID' eller 'Sum'";
+                wsd.LabelShowDialog.Content = "Der var en fejl man";
                 wsd.ShowDialog();
             }
         }
@@ -44,6 +51,30 @@ namespace ERP.Orders
         private void TextBoxWeight_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void ButtonAdd_Product_Click(object sender, RoutedEventArgs e)
+        {
+            WindowPickProduct wpp = new WindowPickProduct();
+            wpp.ShowDialog();
+
+        }
+
+        void WindowPickProduct_eventSendList(Product items)
+        {
+            products.Add(items);
+            Orderlines.ItemsSource = products;
+        }
+
+        void WindowPickCustomer_eventSendList(Domain.Customer items)
+        {
+            TextBoxCustomer.Text = items.CompanyName;
+        }
+
+        private void TextBoxCustomer_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            WindowPickCustomer wpc = new WindowPickCustomer();
+            wpc.ShowDialog();
         }
     }
 }

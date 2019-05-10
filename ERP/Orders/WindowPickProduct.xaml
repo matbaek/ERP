@@ -1,0 +1,24 @@
+﻿<Window x:Class="ERP.Orders.WindowPickProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.Orders"
+        mc:Ignorable="d"
+        Title="WindowPickProduct" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView Margin="10, 10, 10, 40" Name="Products" SelectionChanged="Products_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Navn" Width="300" DisplayMemberBinding="{Binding Path=ProductName}" />
+                    <GridViewColumn Header="Vægt" Width="60" DisplayMemberBinding="{Binding Path=ProductWeight}" />
+                    <GridViewColumn Header="Pris" Width="60" DisplayMemberBinding="{Binding Path=ProductPrice}" />
+                    <GridViewColumn Header="Antal" Width="60" DisplayMemberBinding="{Binding Path=ProductAmount}" />
+                    <GridViewColumn Header="Pakkedato" Width="75" DisplayMemberBinding="{Binding Path=DateOfPackaging, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Udløbsdato" Width="75" DisplayMemberBinding="{Binding Path=DateOfExpiration, StringFormat={}{0:dd/MM/yyyy}}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="button" Content="Tilføj vare til ordre" HorizontalAlignment="Left" Margin="644,387,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click"/>
+    </Grid>
+</Window>
