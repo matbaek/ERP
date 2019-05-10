@@ -79,6 +79,9 @@
     <Compile Include="Orders\WindowPickProduct.xaml.cs">
       <DependentUpon>WindowPickProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Orders\WindowProductAmount.xaml.cs">
+      <DependentUpon>WindowProductAmount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\PageProduct.xaml.cs">
       <DependentUpon>PageProduct.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Orders\WindowPickProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\WindowProductAmount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

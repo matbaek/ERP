@@ -44,6 +44,7 @@
     <Compile Include="Controller.cs" />
     <Compile Include="Customer\CustomerRepository.cs" />
     <Compile Include="DBController.cs" />
+    <Compile Include="Orders\OrderlineRepository.cs" />
     <Compile Include="Orders\OrderRepository.cs" />
     <Compile Include="Stock\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -52,5 +52,10 @@ namespace ERP.Orders
             Products.ItemsSource = items;
         }
 
+        private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            WindowProductAmount wpa = new WindowProductAmount();
+            wpa.ShowDialog();
+        }
     }
 }

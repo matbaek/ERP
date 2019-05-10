@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WindowPickProduct" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView Margin="10, 10, 10, 40" Name="Products" SelectionChanged="Products_SelectionChanged">
+        <ListView Margin="10, 10, 10, 40" Name="Products" SelectionChanged="Products_SelectionChanged" MouseDoubleClick="Products_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Navn" Width="300" DisplayMemberBinding="{Binding Path=ProductName}" />
