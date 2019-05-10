@@ -29,6 +29,23 @@ namespace Domain
 
         }
 
+        public void AddOrder(int customerID, DateTime dateOfPurchase, double totalPrice)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("AddOrder", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("CustomerID", customerID);
+                command.Parameters.AddWithValue("DateOfPurchase", dateOfPurchase);
+                command.Parameters.AddWithValue("TotalPrice", totalPrice);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         public void EditOrder(int orderID, int customerID, DateTime dateOfPurchase, double totalPrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

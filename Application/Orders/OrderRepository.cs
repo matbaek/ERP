@@ -14,12 +14,12 @@ namespace Application
         //Methods
         public void AddOrder(Order order)
         {
-
+            order.AddOrder(order.CustomerID, order.DateOfPurchase, order.TotalPrice);
         }
 
         public void EditOrder(Order order)
         {
-
+            order.EditOrder(order.OrderID, order.CustomerID, order.DateOfPurchase, order.TotalPrice);
         }
 
         public void DeleteOrder(int orderID)

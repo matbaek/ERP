@@ -70,6 +70,9 @@
     <Compile Include="Orders\PageOrder.xaml.cs">
       <DependentUpon>PageOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Orders\WindowAddOrder.xaml.cs">
+      <DependentUpon>WindowAddOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Stock\PageProduct.xaml.cs">
       <DependentUpon>PageProduct.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
     <Page Include="Orders\PageOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\WindowAddOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Stock\PageProduct.xaml">
       <SubType>Designer</SubType>
