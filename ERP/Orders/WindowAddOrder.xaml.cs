@@ -21,6 +21,7 @@ namespace ERP.Orders
             InitializeComponent();
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
+            UpdateTotalPrice();
         }
 
 
@@ -59,6 +60,8 @@ namespace ERP.Orders
             products.Add(item);
             Orderlines.ItemsSource = products;
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
+            UpdateTotalPrice();
+
         }
 
         void WindowPickCustomer_eventSendList(Domain.Customer items)
@@ -70,6 +73,16 @@ namespace ERP.Orders
         {
             WindowPickCustomer wpc = new WindowPickCustomer();
             wpc.ShowDialog();
+        }
+
+        private void UpdateTotalPrice()
+        {
+            double totalPrice = 0;
+            for (int i = 0; i < products.Count; i++)
+            {
+                totalPrice += products[i].ProductPrice;
+            }
+            TextBoxTotalPrice.Text = totalPrice.ToString();
         }
     }
 }

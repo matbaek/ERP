@@ -11,6 +11,7 @@
         <ListView Margin="10,93,23,100" Name="Orderlines">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Ordrelinje" Width="70" DisplayMemberBinding="{Binding ProductName}" />
                     <GridViewColumn Header="Navn" Width="150" DisplayMemberBinding="{Binding ProductName}" />
                     <GridViewColumn Header="Vægt" Width="40" DisplayMemberBinding="{Binding ProductWeight}" />
                     <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding ProductPrice}" />
@@ -21,7 +22,7 @@
             </ListView.View>
         </ListView>
         <Label x:Name="LabelAddOrder" Content="Opret ordre" HorizontalAlignment="Left" Margin="184,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Total Price" Margin="329,237,10,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Pris" Margin="329,237,10,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <Label Content="Kunde" Margin="17,27,332,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <TextBox x:Name="TextBoxCustomer" Height="23" Margin="17,53,316,0" TextWrapping="Wrap" VerticalAlignment="Top" MouseDoubleClick="TextBoxCustomer_MouseDoubleClick" IsReadOnly="True"/>
         <TextBox x:Name="TextBoxTotalPrice" Height="24" Margin="329,262,23,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
