@@ -37,7 +37,7 @@ namespace Domain
 
         }
 
-        public List<Orderline> GetOrderline(int orderlineNumber)
+        public Orderline GetOrderline(int orderlineNumber)
         {
             return null;
         }

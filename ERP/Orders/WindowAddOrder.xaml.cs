@@ -21,6 +21,7 @@ namespace ERP.Orders
             InitializeComponent();
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
+            WindowProductAmount.eventSendProductAmount += WindowProductAmount_eventSendProductAmount;
             UpdateTotalPrice();
         }
 
@@ -62,6 +63,11 @@ namespace ERP.Orders
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
             UpdateTotalPrice();
 
+        }
+
+        void WindowProductAmount_eventSendProductAmount(double amount)
+        {
+            //Noget med at den de override product amount her???
         }
 
         void WindowPickCustomer_eventSendList(Domain.Customer items)

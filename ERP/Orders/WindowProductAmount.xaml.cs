@@ -21,7 +21,11 @@ namespace ERP.Orders
     /// </summary>
     public partial class WindowProductAmount : Window
     {
-     
+        private double amount;
+
+        public delegate void SendProductAmount(double productAmount);
+        public static event SendProductAmount eventSendProductAmount;
+
         public WindowProductAmount()
         {
             InitializeComponent();
@@ -34,7 +38,9 @@ namespace ERP.Orders
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-            
+            amount = double.Parse(TextBoxProductAmount.Text);
+            eventSendProductAmount(amount);
+            this.Close();
         }
     }
 }
