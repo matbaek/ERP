@@ -16,6 +16,8 @@ namespace ERP.Orders
     {
         private OrderRepository orderRepository = new OrderRepository();
         private List<Product> products = new List<Product>();
+        private List<Orderline> orderlines = new List<Orderline>();
+        private Order order = new Order();
         public WindowAddOrder()
         {
             InitializeComponent();
@@ -28,7 +30,6 @@ namespace ERP.Orders
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Order order = new Order();
             WindowShowDialog wsd = new WindowShowDialog();
 
             if (double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
@@ -61,18 +62,19 @@ namespace ERP.Orders
             products.Add(item);
             Orderlines.ItemsSource = products;
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
-            UpdateTotalPrice();
-
         }
 
         void WindowProductAmount_eventSendProductAmount(double amount)
         {
-            //Noget med at den de override product amount her???
+            products[products.Count - 1].ProductAmount = amount;
+            UpdateTotalPrice();
+            Update();
         }
 
         void WindowPickCustomer_eventSendList(Domain.Customer items)
         {
             TextBoxCustomer.Text = items.CompanyName;
+            order.CustomerID = items.CustomerID;
         }
 
         private void TextBoxCustomer_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -86,9 +88,14 @@ namespace ERP.Orders
             double totalPrice = 0;
             for (int i = 0; i < products.Count; i++)
             {
-                totalPrice += products[i].ProductPrice;
+                totalPrice += products[i].ProductAmount * products[i].ProductPrice;
             }
             TextBoxTotalPrice.Text = totalPrice.ToString();
+        }
+
+        private void Update() 
+        {
+            CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh(); 
         }
     }
 }
