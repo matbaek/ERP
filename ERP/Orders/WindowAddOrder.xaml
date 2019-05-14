@@ -11,13 +11,9 @@
         <ListView Margin="10,93,23,100" Name="Orderlines">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Ordrelinje" Width="70" DisplayMemberBinding="{Binding ProductName}" />
-                    <GridViewColumn Header="Navn" Width="150" DisplayMemberBinding="{Binding ProductName}" />
-                    <GridViewColumn Header="Vægt" Width="40" DisplayMemberBinding="{Binding ProductWeight}" />
-                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding ProductPrice}" />
-                    <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding ProductAmount}" />
-                    <GridViewColumn Header="Pakkedato" Width="75" DisplayMemberBinding="{Binding DateOfPackaging, StringFormat={}{0:dd/MM/yyyy}}" />
-                    <GridViewColumn Header="Udløbsdato" Width="75" DisplayMemberBinding="{Binding DateOfExpiration, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding ProductName}" />
+                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding Amount}" />
                 </GridView>
             </ListView.View>
         </ListView>

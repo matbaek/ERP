@@ -23,12 +23,13 @@ namespace ERP.Orders
     {
         private double amount;
 
-        public delegate void SendProductAmount(double productAmount);
+        public delegate void SendProductAmount(double productAmount, bool checkProduct);
         public static event SendProductAmount eventSendProductAmount;
 
         public WindowProductAmount()
         {
             InitializeComponent();
+            TextBoxProductAmount.Focus();
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -39,7 +40,7 @@ namespace ERP.Orders
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             amount = double.Parse(TextBoxProductAmount.Text);
-            eventSendProductAmount(amount);
+            eventSendProductAmount(amount, true);
             this.Close();
         }
     }

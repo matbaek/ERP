@@ -19,6 +19,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="button" Content="Tilføj vare til ordre" HorizontalAlignment="Left" Margin="644,387,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click"/>
     </Grid>
 </Window>

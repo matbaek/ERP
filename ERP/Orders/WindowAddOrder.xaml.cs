@@ -15,15 +15,15 @@ namespace ERP.Orders
     public partial class WindowAddOrder : Window
     {
         private OrderRepository orderRepository = new OrderRepository();
-        private List<Product> products = new List<Product>();
+        private ProductRepository productRepository = new ProductRepository();
         private List<Orderline> orderlines = new List<Orderline>();
         private Order order = new Order();
+        private List<Object> tempList = new List<Object>();
         public WindowAddOrder()
         {
             InitializeComponent();
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
-            WindowProductAmount.eventSendProductAmount += WindowProductAmount_eventSendProductAmount;
             UpdateTotalPrice();
         }
 
@@ -54,20 +54,15 @@ namespace ERP.Orders
         {
             WindowPickProduct wpp = new WindowPickProduct();
             wpp.ShowDialog();
-
         }
 
-        void WindowPickProduct_eventSendProduct(Product item)
+        void WindowPickProduct_eventSendProduct(Product item, double amount)
         {
-            products.Add(item);
-            Orderlines.ItemsSource = products;
-            CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
-        }
+            orderlines.Add(new Orderline(0, 0, item.ProductID, amount));
 
-        void WindowProductAmount_eventSendProductAmount(double amount)
-        {
-            products[products.Count - 1].ProductAmount = amount;
-            UpdateTotalPrice();
+            tempList.Add(new { ProductName = item.ProductName, Price = item.ProductPrice.ToString(), Amount = amount.ToString() });
+            Orderlines.ItemsSource = tempList;
+
             Update();
         }
 
@@ -86,16 +81,17 @@ namespace ERP.Orders
         private void UpdateTotalPrice()
         {
             double totalPrice = 0;
-            for (int i = 0; i < products.Count; i++)
+            for (int i = 0; i < orderlines.Count; i++)
             {
-                totalPrice += products[i].ProductAmount * products[i].ProductPrice;
+                totalPrice += productRepository.DisplayProduct(orderlines[i].ProductID).ProductPrice * orderlines[i].Amount;
             }
             TextBoxTotalPrice.Text = totalPrice.ToString();
         }
 
         private void Update() 
         {
-            CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh(); 
+            CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
+            UpdateTotalPrice();
         }
     }
 }

@@ -23,12 +23,15 @@ namespace ERP.Orders
     {
         private ProductRepository productRepository = new ProductRepository();
         private Product product;
+        private bool sendProduct = false;
+        private double amount = 0;
 
-        public delegate void SendProduct(Product items);
+        public delegate void SendProduct(Product items, double amount);
         public static event SendProduct eventSendProduct;
         public WindowPickProduct()
         {
             InitializeComponent();
+            WindowProductAmount.eventSendProductAmount += WindowProductAmount_eventSendProductAmount;
             Update();
         }
 
@@ -40,12 +43,6 @@ namespace ERP.Orders
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            eventSendProduct(product);
-            this.Close();
-
-        }
         private void Update()
         {
             List<Product> items = productRepository.DisplayProducts();
@@ -54,10 +51,19 @@ namespace ERP.Orders
 
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            eventSendProduct(product);
             WindowProductAmount wpa = new WindowProductAmount();
             wpa.ShowDialog();
-            this.Close();
+            if(sendProduct)
+            {
+                eventSendProduct(product, amount);
+                this.Close();
+            }
+        }
+
+        void WindowProductAmount_eventSendProductAmount(double amount, bool sendProduct)
+        {
+            this.amount = amount;
+            this.sendProduct = sendProduct;
         }
     }
 }

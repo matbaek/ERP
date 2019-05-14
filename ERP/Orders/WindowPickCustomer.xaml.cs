@@ -41,7 +41,7 @@ namespace ERP.Orders
             }
         }
 
-        private void Button_Add_Customer_Click(object sender, RoutedEventArgs e)
+        private void Customers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             eventSendList(customer);
             this.Close();

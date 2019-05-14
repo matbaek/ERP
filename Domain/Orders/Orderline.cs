@@ -14,10 +14,10 @@ namespace Domain
         public int OrderlineNumber { get; set; }
         public int OrderID { get; set; }
         public int ProductID { get; set; }
-        public int Amount { get; set; }
+        public double Amount { get; set; }
 
 
-        public Orderline(int orderlineNumber, int orderID, int productID, int amount)
+        public Orderline(int orderlineNumber, int orderID, int productID, double amount)
         {
             this.OrderlineNumber = orderlineNumber;
             this.OrderID = orderID;
@@ -29,7 +29,7 @@ namespace Domain
 
         }
 
-        public void AddOrderline(int orderlineNumber, int orderID, int productID, int amount)
+        public void AddOrderline(int orderlineNumber, int orderID, int productID, double amount)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -46,7 +46,7 @@ namespace Domain
             }
         }
 
-        public void EditOrderline(int orderlineNumber, int orderID, int productID, int amount)
+        public void EditOrderline(int orderlineNumber, int orderID, int productID, double amount)
         {
 
         }
@@ -61,7 +61,7 @@ namespace Domain
             return null;
         }
 
-        public List<Orderline> GetSpecificOrderlines(int orderlineNumber, int orderID, int productID, int amount)
+        public List<Orderline> GetSpecificOrderlines(int orderlineNumber, int orderID, int productID, double amount)
         {
             return null;
         }

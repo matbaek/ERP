@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WindowPickCustomer" Height="450" Width="800">
     <Grid>
-        <ListView Margin="10, 10, 10, 40" Name="Customers" SelectionChanged="Customers_SelectionChanged">
+        <ListView Margin="10, 10, 10, 40" Name="Customers" SelectionChanged="Customers_SelectionChanged" MouseDoubleClick="Customers_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=CompanyName}" />
@@ -19,6 +19,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Button_Add_Customer" Content="Tilføj kunde" HorizontalAlignment="Left" Margin="695,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add_Customer_Click"/>
     </Grid>
 </Window>
