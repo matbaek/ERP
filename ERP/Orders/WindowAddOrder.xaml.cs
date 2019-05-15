@@ -18,6 +18,8 @@ namespace ERP.Orders
         private ProductRepository productRepository = new ProductRepository();
         private List<Orderline> orderlines = new List<Orderline>();
         private Order order = new Order();
+        private Orderline orderline = new Orderline();
+        private OrderlineRepository orderlineRepository = new OrderlineRepository();
         private List<Object> tempList = new List<Object>();
         public WindowAddOrder()
         {
@@ -37,6 +39,14 @@ namespace ERP.Orders
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
                 orderRepository.AddOrder(order);
+
+                for (int i = 0; i < orderlines.Count; i++)
+                {
+                    orderline.Amount = orderlines[i].Amount;
+                    orderline.ProductID = orderlines[i].ProductID;
+                    orderline.OrderID = order.GetLastOrderID();
+                    orderlineRepository.AddOrderline(orderline);
+                }
 
                 wsd.LabelShowDialog.Content = "Ordren blev tilføjet";
                 wsd.ShowDialog();

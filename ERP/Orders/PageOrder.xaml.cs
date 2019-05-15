@@ -32,7 +32,8 @@ namespace ERP.Orders
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowSearchOrder wso = new WindowSearchOrder();
+            wso.ShowDialog();
         }
 
         private void ButtonAddOrder_Click(object sender, RoutedEventArgs e)

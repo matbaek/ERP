@@ -101,7 +101,7 @@ namespace Domain
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("ShowSpecificCustomers", connection);
+                SqlCommand command = new SqlCommand("ShowSpecificOrders", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@CustomerID", customerID);
@@ -154,6 +154,23 @@ namespace Domain
             }
 
             return order;
+        }
+
+        public int GetLastOrderID()
+        {
+            int newOrderID = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("GetLastOrderID", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                newOrderID = Convert.ToInt32(command.ExecuteScalar());   
+            }
+
+            return newOrderID;
         }
     }
 }

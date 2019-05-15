@@ -35,11 +35,11 @@ namespace Domain
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("AddOrderline", connection);
+                SqlCommand command = new SqlCommand("AddOrderlines", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("OrderID", orderID);
                 command.Parameters.AddWithValue("ProductID", productID);
-                command.Parameters.AddWithValue("ProductAmount", amount);
+                command.Parameters.AddWithValue("Amount", amount);
 
                 command.ExecuteNonQuery();
                 connection.Close();
