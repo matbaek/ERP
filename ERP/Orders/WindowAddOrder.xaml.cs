@@ -79,7 +79,7 @@ namespace ERP.Orders
         void WindowPickCustomer_eventSendList(Domain.Customer items)
         {
             TextBoxCustomer.Text = items.CompanyName;
-            order.CustomerID = items.CustomerID;
+            order.Customer = items;
         }
 
         private void TextBoxCustomer_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

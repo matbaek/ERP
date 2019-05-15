@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,11 @@ namespace ERP.Orders
     {
         private OrderRepository orderRepository = new OrderRepository();
         private Order order;
+
         public PageOrder()
         {
             InitializeComponent();
+            WindowSearchOrder.eventSendList += WindowsSearchOrder_eventSendList;
             Update();
         }
 
@@ -72,7 +75,7 @@ namespace ERP.Orders
 
         private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (((Order)Orders.SelectedItem) != null)
+            if ((Order)(Orders.SelectedItem) != null)
             {
                 order = ((Order)Orders.SelectedItem);
             }

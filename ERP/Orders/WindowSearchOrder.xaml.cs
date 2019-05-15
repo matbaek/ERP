@@ -34,6 +34,7 @@ namespace ERP.Orders
         private void ButtonSearchOrdre_Click(object sender, RoutedEventArgs e)
         {
             Order order = new Order();
+            Domain.Customer customer = new Domain.Customer();
             WindowShowDialog wsd = new WindowShowDialog();
 
             if (double.TryParse(TextBoxOrderID.Text, out double resultOrderID) || (double.TryParse(TextBoxCustomer.Text, out double resultCustomer) || double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) || DatePickerDateOfPurchase.SelectedDate != null))
@@ -49,11 +50,11 @@ namespace ERP.Orders
 
                 if (double.TryParse(TextBoxCustomer.Text, out resultCustomer) == false)
                 {
-                    order.CustomerID = 0;
+                    order.Customer = null;
                 }
                 else
                 {
-                    order.CustomerID = int.Parse(TextBoxCustomer.Text);
+                    order.Customer = customer.GetCustomer(int.Parse(TextBoxCustomer.Text));
                 }
 
                 if (double.TryParse(TextBoxTotalPrice.Text, out resultTotalPrice) == false)

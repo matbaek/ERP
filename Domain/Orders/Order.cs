@@ -12,7 +12,7 @@ namespace Domain
     {
         //Property
         public int OrderID { get; set; }
-        public int CustomerID { get; set; }
+        public Customer Customer { get; set; }
         public DateTime DateOfPurchase { get; set; }
         public double TotalPrice { get; set; }
 
@@ -20,16 +20,16 @@ namespace Domain
 
         public Order() { }
 
-        public Order(int orderID, int customerID, DateTime dateOfPurchase, double totalPrice)
+        public Order(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
         {
             this.OrderID = orderID;
-            this.CustomerID = customerID;
+            this.Customer = customer;
             this.DateOfPurchase = dateOfPurchase;
             this.TotalPrice = totalPrice;
 
         }
 
-        public void AddOrder(int customerID, DateTime dateOfPurchase, double totalPrice)
+        public void AddOrder(Customer customer, DateTime dateOfPurchase, double totalPrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -37,7 +37,7 @@ namespace Domain
 
                 SqlCommand command = new SqlCommand("AddOrder", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("CustomerID", customerID);
+                command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("DateOfPurchase", dateOfPurchase);
                 command.Parameters.AddWithValue("TotalPrice", totalPrice);
 
@@ -46,7 +46,7 @@ namespace Domain
             }
         }
 
-        public void EditOrder(int orderID, int customerID, DateTime dateOfPurchase, double totalPrice)
+        public void EditOrder(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -55,7 +55,7 @@ namespace Domain
                 SqlCommand command = new SqlCommand("EditOrder", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("OrderID", orderID);
-                command.Parameters.AddWithValue("CustomerID", customerID);
+                command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("PurchaseDate", dateOfPurchase);
                 command.Parameters.AddWithValue("Price", totalPrice);
 
@@ -67,6 +67,7 @@ namespace Domain
         public List<Order> GetOrders()
         {
             List<Order> orders = new List<Order>();
+            Customer tempCustomer = new Customer();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -82,10 +83,10 @@ namespace Domain
                     while (reader.Read())
                     {
                         int orderID = int.Parse(reader["OrderID"].ToString());
-                        int customerID = int.Parse(reader["CustomerID"].ToString());
+                        Customer customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
                         double totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        orders.Add(new Order(orderID, customerID, dateOfPurchase, totalPrice));
+                        orders.Add(new Order(orderID, customer, dateOfPurchase, totalPrice));
                     }
                 }
             }
@@ -93,9 +94,10 @@ namespace Domain
             return orders;
         }
 
-        public List<Order> GetSpecificOrders(int customerID, DateTime dateOfPurchase, double totalPrice)
+        public List<Order> GetSpecificOrders(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
         {
             List<Order> orders = new List<Order>();
+            Customer tempCustomer = new Customer();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -104,7 +106,8 @@ namespace Domain
                 SqlCommand command = new SqlCommand("ShowSpecificOrders", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@CustomerID", customerID);
+                command.Parameters.AddWithValue("@OrderID", orderID);
+                command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("@DateOfPurchase", dateOfPurchase);
                 command.Parameters.AddWithValue("@TotalPrice", totalPrice);
 
@@ -115,10 +118,10 @@ namespace Domain
                     while (reader.Read())
                     {
                         int _orderID = int.Parse(reader["OrderID"].ToString());
-                        int _customerID = int.Parse(reader["CustomerID"].ToString());
+                        Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime _dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
                         double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        orders.Add(new Order(_orderID, _customerID, _dateOfPurchase, _totalPrice));
+                        orders.Add(new Order(_orderID, _customer, _dateOfPurchase, _totalPrice));
                     }
                 }
             }
@@ -129,6 +132,7 @@ namespace Domain
         public Order GetOrder(int orderID)
         {
             Order order = new Order();
+            Customer tempCustomer = new Customer();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -145,10 +149,10 @@ namespace Domain
                     while (reader.Read())
                     {
                         int _orderID = int.Parse(reader["OrderID"].ToString());
-                        int _customerID = int.Parse(reader["CustomerID"].ToString());
+                        Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime _dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
                         double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        order = new Order(_orderID, _customerID, _dateOfPurchase, _totalPrice);
+                        order = new Order(_orderID, _customer, _dateOfPurchase, _totalPrice);
                     }
                 }
             }
