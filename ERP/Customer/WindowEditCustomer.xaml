@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Customer"
         mc:Ignorable="d"
-        Title="Rediger kunde" Height="310" Width="310" WindowStartupLocation="CenterScreen">
+        Title="Rediger kunde" Height="500" Width="310" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Ændre kunde" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxCompanyName" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" Text="Firma navn" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxContactPerson" HorizontalAlignment="Left" Height="23" Margin="10,72,0,0" TextWrapping="Wrap" Text="Kontakt person" VerticalAlignment="Top" Width="272" />
-        <TextBox x:Name="TextBoxCustomerAddress" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxCustomerTelephone" HorizontalAlignment="Left" Height="23" Margin="10,128,0,0" TextWrapping="Wrap" Text="Telefon" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxCustomerZip" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Postnr" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxCustomerTown" HorizontalAlignment="Left" Height="23" Margin="10,184,0,0" TextWrapping="Wrap" Text="By" VerticalAlignment="Top" Width="272"/>
-        <Button x:Name="ButtonEditCustomer" Content="Opdater" HorizontalAlignment="Left" Margin="105,239,0,0" VerticalAlignment="Top" Width="75" Click="ButtonEditCustomer_Click"/>
+        <TextBox x:Name="TextBoxCompanyName" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxContactPerson" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" />
+        <TextBox x:Name="TextBoxCustomerAddress" HorizontalAlignment="Left" Height="23" Margin="10,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxCustomerTelephone" HorizontalAlignment="Left" Height="23" Margin="10,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxCustomerZip" HorizontalAlignment="Left" Height="23" Margin="10,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxCustomerTown" HorizontalAlignment="Left" Height="23" Margin="10,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="ButtonEditCustomer" Content="Opdater" HorizontalAlignment="Left" Margin="105,420,0,0" VerticalAlignment="Top" Width="75" Click="ButtonEditCustomer_Click"/>
+        <Label Content="Firma navn" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kontakt person" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adresse" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+        <Label Content="Telefon" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top"/>
+        <Label Content="Postnr" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top"/>
+        <Label Content="By" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

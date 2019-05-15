@@ -9,15 +9,18 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LabelEditRawProduct" Content="Rediger Råvare" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
-        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="272" >
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
+        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="272" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonEdit" Content="Rediger råvare" HorizontalAlignment="Left" Margin="100,240,0,0" VerticalAlignment="Top" Width="82" Click="ButtonEdit_Click"/>
+        <Button x:Name="ButtonEdit" Content="Rediger råvare" HorizontalAlignment="Left" Margin="105,237,0,0" VerticalAlignment="Top" Width="82" Click="ButtonEdit_Click"/>
+        <Label x:Name="Navn" Content="Navn" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Vægt" Content="Vægt" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Dato" Content="Dato" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

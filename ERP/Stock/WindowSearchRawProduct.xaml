@@ -9,15 +9,18 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="LabelSearchRawProduct" Content="Søg efter Råvare" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="25" Margin="10,44,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="25" Margin="10,72,0,0" TextWrapping="Wrap" Text="Vægt" VerticalAlignment="Top" Width="272"/>
-        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="272" >
+        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="25" Margin="10,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="25" Margin="10,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272"/>
+        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="272" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonSearch" Content="Søg efter råvare" HorizontalAlignment="Left" Margin="91,238,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Button x:Name="ButtonSearch" Content="Søg efter råvare" HorizontalAlignment="Left" Margin="91,233,0,0" VerticalAlignment="Top" Width="100" Click="ButtonSearch_Click"/>
+        <Label x:Name="LabelSearchRawProduct_Copy" Content="Navn" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelSearchRawProduct_Copy1" Content="Vægt" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelSearchRawProduct_Copy2" Content="Dato" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

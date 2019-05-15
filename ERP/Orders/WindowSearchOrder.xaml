@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Orders"
         mc:Ignorable="d"
-        Title="Søg efter order" Height="229.643" Width="310" WindowStartupLocation="CenterScreen">
+        Title="Søg efter order" Height="380" Width="300" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,1">
         <Label Content="Søg efter order" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxOrderID" HorizontalAlignment="Left" Height="23" Margin="10,44,0,0" TextWrapping="Wrap" Text="Order nummer" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxCustomer" HorizontalAlignment="Left" Height="23" Margin="10,72,0,0" TextWrapping="Wrap" Text="Kunde" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxTotalPrice" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Samlet pris" VerticalAlignment="Top" Width="272"/>
-        <Button x:Name="ButtonSearchOrdre" Content="Søg" HorizontalAlignment="Left" Margin="109,164,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="ButtonSearchOrdre_Click"/>
-        <DatePicker x:Name="DatePickerDateOfPurchase" HorizontalAlignment="Left" Margin="94,128,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxOrderID" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxCustomer" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="TextBoxTotalPrice" HorizontalAlignment="Left" Height="23" Margin="10,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="ButtonSearchOrdre" Content="Søg" HorizontalAlignment="Left" Margin="110,300,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="ButtonSearchOrdre_Click"/>
+        <DatePicker x:Name="DatePickerDateOfPurchase" HorizontalAlignment="Left" Width="272" Margin="10,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="Order nummer" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kunde" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
+        <Label Content="Samlet pris" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dato" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
