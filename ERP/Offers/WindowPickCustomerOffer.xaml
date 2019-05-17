@@ -1,0 +1,23 @@
+﻿<Window x:Class="ERP.Offers.WindowPickCustomerOffer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.Offers"
+        mc:Ignorable="d"
+       Title="WindowPickCustomerOffer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView Margin="10, 10, 10, 40" Name="Customers" SelectionChanged="Customers_SelectionChanged" MouseDoubleClick="Customers_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=CompanyName}" />
+                    <GridViewColumn Header="Kontakt person" Width="200" DisplayMemberBinding="{Binding Path=ContactPerson}" />
+                    <GridViewColumn Header="Adresse" Width="130" DisplayMemberBinding="{Binding Path=CustomerAddress}" />
+                    <GridViewColumn Header="Telefonnummer" Width="90" DisplayMemberBinding="{Binding Path=CustomerTelephone}" />
+                    <GridViewColumn Header="Postnummer" Width="75" DisplayMemberBinding="{Binding Path=CustomerZip}" />
+                    <GridViewColumn Header="By" Width="80" DisplayMemberBinding="{Binding Path=CustomerTown}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

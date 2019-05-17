@@ -12,15 +12,15 @@ namespace Domain
     public class Orderline : DB.Database
     {
         public int OrderlineNumber { get; set; }
-        public Order Order { get; set; }
+        public int ID { get; set; }
         public Product Product { get; set; }
         public double Amount { get; set; }
 
 
-        public Orderline(int orderlineNumber, Order order, Product product, double amount)
+        public Orderline(int orderlineNumber, int id, Product product, double amount)
         {
             this.OrderlineNumber = orderlineNumber;
-            this.Order = order;
+            this.ID = id;
             this.Product = product;
             this.Amount = amount;
         }

@@ -1,0 +1,30 @@
+﻿<Page x:Class="ERP.Offers.PageOffer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ERP.Offers"
+      mc:Ignorable="d" 
+      Height="500" Width="900"
+      Title="PageOrder">
+
+    <Grid>
+        <ListView Margin="10, 10, 10, 40" Name="Offers">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tilbuds nummer" Width="100" DisplayMemberBinding="{Binding Path=OfferID}" />
+                    <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=Customer.CompanyName}" />
+                    <GridViewColumn Header="Tilbuds start" Width="100" DisplayMemberBinding="{Binding Path=DateOfOffer, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Tilbud udløber" Width="100" DisplayMemberBinding="{Binding Path=DateOfOfferExpiration, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <GridViewColumn Header="Samlet pris" Width="75" DisplayMemberBinding="{Binding Path=TotalPrice}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButtonSearch" Content="Søg efter tilbud" HorizontalAlignment="Left" Margin="136,470,0,0" VerticalAlignment="Top" Width="100" />
+        <Button x:Name="ButtonAddOffer" Content="Tilføj tilbud" HorizontalAlignment="Left" Margin="266,470,0,0" VerticalAlignment="Top" Width="100" Click="ButtonAddOffer_Click" />
+        <Button x:Name="ButtonEditOffer" Content="Rediger tilbud" HorizontalAlignment="Left" Margin="398,470,0,0" VerticalAlignment="Top" Width="100" />
+        <Button x:Name="ButtonDeleteOffer" Content="Slet tilbud" HorizontalAlignment="Left" Margin="530,470,0,0" VerticalAlignment="Top" Width="100" />
+        <Button x:Name="ButtonReset" Content="Nulstil" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="100" />
+        <Button x:Name="ButtonMenu" Content="Hovedmenu" HorizontalAlignment="Left" Margin="790,470,0,0" VerticalAlignment="Top" Width="100" />
+    </Grid>
+</Page>

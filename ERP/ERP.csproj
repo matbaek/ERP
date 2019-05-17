@@ -61,6 +61,30 @@
     <Compile Include="Customer\WindowAddCustomer.xaml.cs">
       <DependentUpon>WindowAddCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Offers\PageOffer.xaml.cs">
+      <DependentUpon>PageOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowAddOffer.xaml.cs">
+      <DependentUpon>WindowAddOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowDeleteOffer.xaml.cs">
+      <DependentUpon>WindowDeleteOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowEditOffer.xaml.cs">
+      <DependentUpon>WindowEditOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowPickCustomerOffer.xaml.cs">
+      <DependentUpon>WindowPickCustomerOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowPickProductAmountOffer.xaml.cs">
+      <DependentUpon>WindowPickProductAmountOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowPickProductOffer.xaml.cs">
+      <DependentUpon>WindowPickProductOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offers\WindowSearchOffer.xaml.cs">
+      <DependentUpon>WindowSearchOffer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Orders\WindowDeleteOrder.xaml.cs">
       <DependentUpon>WindowDeleteOrder.xaml</DependentUpon>
     </Compile>
@@ -132,6 +156,38 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Customer\WindowAddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\PageOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowAddOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowDeleteOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowEditOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowPickCustomerOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowPickProductAmountOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowPickProductOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offers\WindowSearchOffer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
