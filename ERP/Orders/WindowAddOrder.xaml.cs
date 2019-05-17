@@ -41,6 +41,7 @@ namespace ERP.Orders
 
                 for (int i = 0; i < orderlines.Count; i++)
                 {
+                    orderlines[i].Order.OrderID = orderRepository.DisplayLastOrderID();
                     orderline.Order = orderlines[i].Order;
                     orderline.Product = orderlines[i].Product;
                     orderline.Amount = orderlines[i].Amount;

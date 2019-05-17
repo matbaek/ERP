@@ -40,5 +40,10 @@ namespace Application
         {
             return order.GetOrder(orderID);
         }
+
+        public int DisplayLastOrderID()
+        {
+            return order.GetLastOrderID();
+        }
     }
 }
