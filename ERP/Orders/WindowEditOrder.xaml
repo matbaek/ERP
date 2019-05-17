@@ -8,16 +8,16 @@
                 Title="Rediger Ordre" Height="367.761" Width="472"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView Margin="10,93,23,100" Name="Order" MouseDoubleClick="Orderlines_MouseDoubleClick" SelectionChanged="Orderlines_SelectionChanged">
+        <ListView Margin="10,93,23,100" Name="Orderlines" IsEnabled="False">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding ProductName}" />
-                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding Product.ProductName}" />
+                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Product.ProductPrice}" />
                     <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding Amount}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="LabelAddOrder" Content="Opret ordre" HorizontalAlignment="Left" Margin="184,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelEditOrder" Content="Rediger ordre" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Pris" Margin="329,237,10,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <Label Content="Kunde" Margin="17,27,332,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <TextBox x:Name="TextBoxCustomer" Height="23" Margin="17,53,316,0" TextWrapping="Wrap" VerticalAlignment="Top" MouseDoubleClick="TextBoxCustomer_MouseDoubleClick" IsReadOnly="True"/>
@@ -30,8 +30,6 @@
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonAdd" Content="Opret ordre" Margin="184,295,161,0" VerticalAlignment="Top" Click="AddButton_Click"/>
-        <Button x:Name="ButtonAdd_Product" Content="Tilføj vare" Margin="17,266,328,0" VerticalAlignment="Top" Click="ButtonAdd_Product_Click"/>
-
+        <Button x:Name="ButtonEdit" Content="Rediger ordre" Margin="173,295,172,0" VerticalAlignment="Top" Click="EditButton_Click"/>
     </Grid>
 </Window>

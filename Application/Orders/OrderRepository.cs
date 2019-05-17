@@ -24,7 +24,7 @@ namespace Application
 
         public void DeleteOrder(int orderID)
         {
-
+            order.DeleteOrder(orderID);
         }
 
         public List<Order> DisplayOrders()

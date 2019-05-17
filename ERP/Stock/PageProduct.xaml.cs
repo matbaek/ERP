@@ -51,7 +51,7 @@ namespace ERP.Stock
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (product.ProductID != 0)
+            if (product != null)
             {
                 WindowEditProduct wep = new WindowEditProduct(product);
                 wep.ShowDialog();
@@ -67,7 +67,7 @@ namespace ERP.Stock
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (product.ProductID != 0)
+            if (product != null)
             {
                 WindowDeleteProduct wdp = new WindowDeleteProduct(product);
                 wdp.ShowDialog();

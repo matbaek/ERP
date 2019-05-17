@@ -11,8 +11,8 @@
         <ListView Margin="10,93,23,100" Name="Orderlines">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding ProductName}" />
-                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding Product.ProductName}" />
+                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Product.ProductPrice}" />
                     <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding Amount}" />
                 </GridView>
             </ListView.View>

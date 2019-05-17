@@ -15,7 +15,6 @@ namespace ERP.Orders
     public partial class WindowAddOrder : Window
     {
         private OrderRepository orderRepository = new OrderRepository();
-        private ProductRepository productRepository = new ProductRepository();
         private List<Orderline> orderlines = new List<Orderline>();
         private Order order = new Order();
         private Orderline orderline = new Orderline();
@@ -42,9 +41,9 @@ namespace ERP.Orders
 
                 for (int i = 0; i < orderlines.Count; i++)
                 {
+                    orderline.Order = orderlines[i].Order;
+                    orderline.Product = orderlines[i].Product;
                     orderline.Amount = orderlines[i].Amount;
-                    orderline.ProductID = orderlines[i].ProductID;
-                    orderline.OrderID = order.GetLastOrderID();
                     orderlineRepository.AddOrderline(orderline);
                 }
 
@@ -68,10 +67,9 @@ namespace ERP.Orders
 
         void WindowPickProduct_eventSendProduct(Product item, double amount)
         {
-            orderlines.Add(new Orderline(0, 0, item.ProductID, amount));
-
-            tempList.Add(new { ProductName = item.ProductName, Price = item.ProductPrice.ToString(), Amount = amount.ToString() });
-            Orderlines.ItemsSource = tempList;
+            orderlines.Add(new Orderline(0, order, item, amount));
+            
+            Orderlines.ItemsSource = orderlines;
 
             Update();
         }
@@ -93,7 +91,7 @@ namespace ERP.Orders
             double totalPrice = 0;
             for (int i = 0; i < orderlines.Count; i++)
             {
-                totalPrice += productRepository.DisplayProduct(orderlines[i].ProductID).ProductPrice * orderlines[i].Amount;
+                totalPrice += orderlines[i].Product.ProductPrice * orderlines[i].Amount;
             }
             TextBoxTotalPrice.Text = totalPrice.ToString();
         }

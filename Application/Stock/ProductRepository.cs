@@ -37,10 +37,10 @@ namespace Application
         {
             return product.GetSpecificProducts(product.ProductName, product.ProductWeight, product.ProductPrice, product.ProductAmount, product.DateOfPackaging, product.DateOfExpiration);
         }
+
         public Product DisplayProduct(int productID)
         {
             return product.GetProduct(productID);
         }
-
     }
 }

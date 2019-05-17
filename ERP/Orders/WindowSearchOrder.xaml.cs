@@ -50,7 +50,8 @@ namespace ERP.Orders
 
                 if (double.TryParse(TextBoxCustomer.Text, out resultCustomer) == false)
                 {
-                    order.Customer = null;
+                    order.Customer = new Domain.Customer();
+                    order.Customer.CustomerID = 0;
                 }
                 else
                 {

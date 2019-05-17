@@ -48,11 +48,11 @@ namespace ERP.Orders
 
         private void ButtonEditOrder_Click(object sender, RoutedEventArgs e)
         {
-            if (order.OrderID != 0)
+            if (order != null)
             {
-            WindowEditOrder weo = new WindowEditOrder(order);
-            weo.ShowDialog();
-            Update();
+                WindowEditOrder weo = new WindowEditOrder(order);
+                weo.ShowDialog();
+                Update();
             }
             else
             {
@@ -64,7 +64,18 @@ namespace ERP.Orders
 
         private void ButtonDeleteOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            if (order != null)
+            {
+                WindowDeleteOrder weo = new WindowDeleteOrder(order);
+                weo.ShowDialog();
+                Update();
+            }
+            else
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Ingen ordre er valgt!";
+                wsd.ShowDialog();
+            }
         }
 
         private void ButtonReset_Click(object sender, RoutedEventArgs e)

@@ -23,41 +23,36 @@ namespace ERP.Orders
     public partial class WindowEditOrder : Window
     {
         private OrderRepository orderRepository = new OrderRepository();
-        private ProductRepository productRepository = new ProductRepository();
         private List<Orderline> orderlines = new List<Orderline>();
         private Order order = new Order();
         private Orderline orderline = new Orderline();
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
-        private List<Object> tempList = new List<Object>();
+        private Domain.Customer customer = new Domain.Customer();
         public WindowEditOrder(Order order)
         {
             InitializeComponent();
             TextBoxCustomer.Text = order.Customer.CompanyName;
             TextBoxTotalPrice.Text = order.TotalPrice.ToString();
             TextBoxDateOfPurchase.Text = order.DateOfPurchase.ToString();
-            WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
+            orderlines = orderlineRepository.DisplayOrderlines(order);
+            customer = order.Customer;
+
+            Orderlines.ItemsSource = orderlines;
+            
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             WindowShowDialog wsd = new WindowShowDialog();
-
+            
             if (double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
             {
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
-                orderRepository.AddOrder(order);
+                orderRepository.EditOrder(order);
 
-                for (int i = 0; i < orderlines.Count; i++)
-                {
-                    orderline.Amount = orderlines[i].Amount;
-                    orderline.ProductID = orderlines[i].ProductID;
-                    orderline.OrderID = order.GetLastOrderID();
-                    orderlineRepository.AddOrderline(orderline);
-                }
-
-                wsd.LabelShowDialog.Content = "Ordren blev tilføjet";
+                wsd.LabelShowDialog.Content = "Ordren blev redigeret";
                 wsd.ShowDialog();
 
                 this.Close();
@@ -67,22 +62,6 @@ namespace ERP.Orders
                 wsd.LabelShowDialog.Content = "Der var en fejl man";
                 wsd.ShowDialog();
             }
-        }
-
-        private void ButtonAdd_Product_Click(object sender, RoutedEventArgs e)
-        {
-            WindowPickProduct wpp = new WindowPickProduct();
-            wpp.ShowDialog();
-        }
-
-        void WindowPickProduct_eventSendProduct(Product item, double amount)
-        {
-            orderlines.Add(new Orderline(0, 0, item.ProductID, amount));
-
-            tempList.Add(new { ProductName = item.ProductName, Price = item.ProductPrice.ToString(), Amount = amount.ToString() });
-            Order.ItemsSource = tempList;
-
-            Update();
         }
 
         void WindowPickCustomer_eventSendList(Domain.Customer items)
@@ -97,35 +76,9 @@ namespace ERP.Orders
             wpc.ShowDialog();
         }
 
-        private void UpdateTotalPrice()
-        {
-            double totalPrice = 0;
-            for (int i = 0; i < orderlines.Count; i++)
-            {
-                totalPrice += productRepository.DisplayProduct(orderlines[i].ProductID).ProductPrice * orderlines[i].Amount;
-            }
-            TextBoxTotalPrice.Text = totalPrice.ToString();
-        }
-
         private void Update()
         {
-            CollectionViewSource.GetDefaultView(Order.ItemsSource).Refresh();
-            UpdateTotalPrice();
-        }
-
-        private void Orderlines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            TextBoxCustomer.Text = order.Customer.CompanyName;
-            TextBoxTotalPrice.Text = order.TotalPrice.ToString();
-            TextBoxDateOfPurchase.Text = order.DateOfPurchase.ToString(); 
-        }
-
-        private void Orderlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((Order)(Order.SelectedItem) != null)
-            {
-                order = ((Order)Order.SelectedItem);
-            }
+            CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
         }
     }
 }

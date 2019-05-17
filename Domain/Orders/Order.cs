@@ -56,8 +56,23 @@ namespace Domain
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("OrderID", orderID);
                 command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
-                command.Parameters.AddWithValue("PurchaseDate", dateOfPurchase);
-                command.Parameters.AddWithValue("Price", totalPrice);
+                command.Parameters.AddWithValue("DateOfPurchase", dateOfPurchase);
+                command.Parameters.AddWithValue("TotalPrice", totalPrice);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void DeleteOrder(int orderID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("DeleteOrder", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@OrderID", orderID);
 
                 command.ExecuteNonQuery();
                 connection.Close();

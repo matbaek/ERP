@@ -61,7 +61,7 @@
     <Compile Include="Customer\WindowAddCustomer.xaml.cs">
       <DependentUpon>WindowAddCustomer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Customer\WindowDeleteOrder.xaml.cs">
+    <Compile Include="Orders\WindowDeleteOrder.xaml.cs">
       <DependentUpon>WindowDeleteOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customer\WindowEditCustomer.xaml.cs">
@@ -135,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Customer\WindowDeleteOrder.xaml">
+    <Page Include="Orders\WindowDeleteOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,12 +14,12 @@ namespace Application
         //Methods
         public void AddOrderline(Orderline orderline)
         {
-            orderline.AddOrderline(orderline.OrderlineNumber, orderline.OrderID, orderline.ProductID, orderline.Amount);
+            orderline.AddOrderline(orderline.OrderlineNumber, orderline.Order, orderline.Product, orderline.Amount);
         }
 
         public void EditOrderline(Orderline orderline)
         {
-            orderline.EditOrderline(orderline.OrderlineNumber, orderline.OrderID, orderline.ProductID, orderline.Amount);
+            orderline.EditOrderline(orderline.OrderlineNumber, orderline.Order, orderline.Product, orderline.Amount);
         }
 
         public void DeleteOrderline(int orderlineID)
@@ -27,15 +27,11 @@ namespace Application
 
         }
 
-        public List<Orderline> DisplayOrderlines()
+        public List<Orderline> DisplayOrderlines(Order order)
         {
-            return orderline.GetOrderlines();
+            return orderline.GetOrderlines(order.OrderID);
         }
 
-        public List<Orderline> DisplaySpecificOrderlines(Orderline orderline)
-        {
-            return orderline.GetSpecificOrderlines(orderline.OrderlineNumber, orderline.OrderID, orderline.ProductID, orderline.Amount);
-        }
         public Orderline DisplayOrderline(int orderlineNumber)
         {
             return orderline.GetOrderline(orderlineNumber);
