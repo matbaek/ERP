@@ -27,6 +27,7 @@ namespace ERP.Stock
         public WindowEditProduct(Product product)
         {
             InitializeComponent();
+            this.product = product;
             TextBoxName.Text = product.ProductName;
             TextBoxWeight.Text = product.ProductWeight.ToString();
             TextBoxPrice.Text = product.ProductPrice.ToString();

@@ -51,7 +51,7 @@ namespace ERP.Offers
 
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            WindowPickProductAmountOffer wpao = new WindowPickProductAmountOffer();
+            WindowPickProductAmountOffer wpao = new WindowPickProductAmountOffer(product);
             wpao.ShowDialog();
             if (sendProduct)
             {

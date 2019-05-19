@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Domain;
-using Domain.Offers;
 using Application;
-using Application.Offers;
+
 
 namespace ERP.Offers
 {
@@ -35,7 +34,7 @@ namespace ERP.Offers
             TextBoxCustomer.Text = offer.Customer.CompanyName;
             TextBoxTotalPrice.Text = offer.TotalPrice.ToString();
             TextBoxDateOfOffer.Text = offer.DateOfOffer.ToString();
-            orderlines = orderlineRepository.DisplayOrderlinesOffer(offer);
+            orderlines = orderlineRepository.DisplayOrderlines(new Order(), offer);
             customer = offer.Customer;
 
             Orderlines.ItemsSource = orderlines;

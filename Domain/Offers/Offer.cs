@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Domain.Offers
+namespace Domain
 {
     public class Offer : DB.Database
     {
@@ -15,14 +15,13 @@ namespace Domain.Offers
         public int OfferID { get; set; }
         public Customer Customer { get; set; }
         public DateTime DateOfOffer { get; set; }
-        public DateTime DateOfOfferExpiration { get; set; }
         public double TotalPrice { get; set; }
 
         //Methods
 
         public Offer() { }
 
-        public Offer(int offerID, Customer customer, DateTime dateOfOffer, DateTime dateOfOfferExpiration, double totalPrice)
+        public Offer(int offerID, Customer customer, DateTime dateOfOffer, double totalPrice)
         {
             this.OfferID = offerID;
             this.Customer = customer;
@@ -31,7 +30,7 @@ namespace Domain.Offers
 
         }
 
-        public void AddOffer(Customer customer, DateTime dateOfOffer, DateTime dateOfOfferExpiration, double totalPrice)
+        public void AddOffer(Customer customer, DateTime dateOfOffer, double totalPrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -41,7 +40,6 @@ namespace Domain.Offers
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("DateOfOffer", dateOfOffer);
-                command.Parameters.AddWithValue("DateOfOfferExpiration", dateOfOfferExpiration);
                 command.Parameters.AddWithValue("TotalPrice", totalPrice);
 
                 command.ExecuteNonQuery();
@@ -49,7 +47,7 @@ namespace Domain.Offers
             }
         }
 
-        public void EditOffer(int offerID, Customer customer, DateTime dateOfOffer, DateTime dateOfOfferExpiration, double totalPrice)
+        public void EditOffer(int offerID, Customer customer, DateTime dateOfOffer, double totalPrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -60,7 +58,6 @@ namespace Domain.Offers
                 command.Parameters.AddWithValue("OfferID", offerID);
                 command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("DateOfOffer", dateOfOffer);
-                command.Parameters.AddWithValue("DateOfOfferExpiration", dateOfOfferExpiration);
                 command.Parameters.AddWithValue("TotalPrice", totalPrice);
 
                 command.ExecuteNonQuery();
@@ -104,9 +101,8 @@ namespace Domain.Offers
                         int offerID = int.Parse(reader["OfferID"].ToString());
                         Customer customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime dateOfOffer = DateTime.Parse(reader["DateOfOffer"].ToString());
-                        DateTime dateOfOfferExpiration = DateTime.Parse(reader["DateOfOfferExpiration"].ToString());
                         double totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        offers.Add(new Offer(offerID, customer, dateOfOffer, dateOfOfferExpiration, totalPrice));
+                        offers.Add(new Offer(offerID, customer, dateOfOffer, totalPrice));
                     }
                 }
             }
@@ -114,7 +110,7 @@ namespace Domain.Offers
             return offers;
         }
 
-        public List<Offer> GetSpecificOffers(int offerID, Customer customer, DateTime dateOfOffer, DateTime dateOfOfferExpiration, double totalPrice)
+        public List<Offer> GetSpecificOffers(int offerID, Customer customer, DateTime dateOfOffer, double totalPrice)
         {
             List<Offer> offers = new List<Offer>();
             Customer tempCustomer = new Customer();
@@ -129,7 +125,6 @@ namespace Domain.Offers
                 command.Parameters.AddWithValue("@OfferID", offerID);
                 command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("@DateOfOffer", dateOfOffer);
-                command.Parameters.AddWithValue("@DateOfOfferExpiration", dateOfOfferExpiration);
                 command.Parameters.AddWithValue("@TotalPrice", totalPrice);
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -141,9 +136,8 @@ namespace Domain.Offers
                         int _offerID = int.Parse(reader["OfferID"].ToString());
                         Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime _dateOfOffer = DateTime.Parse(reader["DateOfOffer"].ToString());
-                        DateTime _dateOfOfferExpiration = DateTime.Parse(reader["DateOfOfferExpiration"].ToString());
                         double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        offers.Add(new Offer(_offerID, _customer, _dateOfOffer, _dateOfOfferExpiration, _totalPrice));
+                        offers.Add(new Offer(_offerID, _customer, _dateOfOffer, _totalPrice));
                     }
                 }
             }
@@ -173,9 +167,8 @@ namespace Domain.Offers
                         int _offerID = int.Parse(reader["OfferID"].ToString());
                         Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime _dateOfOffer = DateTime.Parse(reader["DateOfOffer"].ToString());
-                        DateTime _dateOfOfferExpiration = DateTime.Parse(reader["DateOfOfferExpiration"].ToString());
                         double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        offer = new Offer(_offerID, _customer, _dateOfOffer, _dateOfOfferExpiration, _totalPrice);
+                        offer = new Offer(_offerID, _customer, _dateOfOffer, _totalPrice);
                     }
                 }
             }

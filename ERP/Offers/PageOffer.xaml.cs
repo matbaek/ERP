@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Domain.Offers;
-using Application.Offers;
+using Domain;
+using Application;
 
 namespace ERP.Offers
 {
@@ -28,7 +28,7 @@ namespace ERP.Offers
         public PageOffer()
         {
             InitializeComponent();
-            WindowSearchOffer.eventSendList += WindowsSearchOrder_eventSendList;
+            WindowSearchOffer.eventSendList += WindowsSearchOffer_eventSendList;
             Update();
         }
 
@@ -36,6 +36,7 @@ namespace ERP.Offers
         {
             WindowAddOffer wao = new WindowAddOffer();
             wao.ShowDialog();
+            Update();
         }
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +60,7 @@ namespace ERP.Offers
             }
         }
 
-        private void ButtonDeleteOrder_Click(object sender, RoutedEventArgs e)
+        private void ButtonDeleteOffer_Click(object sender, RoutedEventArgs e)
         {
             if (offer != null)
             {
@@ -100,7 +101,7 @@ namespace ERP.Offers
             }
         }
 
-        void WindowsSearchOrder_eventSendList(List<Offer> items)
+        void WindowsSearchOffer_eventSendList(List<Offer> items)
         {
             Offers.ItemsSource = items;
         }

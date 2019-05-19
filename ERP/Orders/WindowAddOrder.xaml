@@ -8,20 +8,20 @@
                 Title="Tilføj Ordre" Height="367.761" Width="472"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView Margin="10,93,23,100" Name="Orderlines">
+        <ListView Margin="10,134,23,59" Name="Orderlines">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product navn" Width="250" DisplayMemberBinding="{Binding Product.ProductName}" />
+                    <GridViewColumn Header="Produkt navn" Width="250" DisplayMemberBinding="{Binding Product.ProductName}" />
                     <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Product.ProductPrice}" />
                     <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding Amount}" />
                 </GridView>
             </ListView.View>
         </ListView>
         <Label x:Name="LabelAddOrder" Content="Opret ordre" HorizontalAlignment="Left" Margin="184,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Pris" Margin="329,237,10,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Pris" Margin="329,278,10,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <Label Content="Kunde" Margin="17,27,332,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
         <TextBox x:Name="TextBoxCustomer" Height="23" Margin="17,53,316,0" TextWrapping="Wrap" VerticalAlignment="Top" MouseDoubleClick="TextBoxCustomer_MouseDoubleClick" IsReadOnly="True"/>
-        <TextBox x:Name="TextBoxTotalPrice" Height="24" Margin="329,262,23,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
+        <TextBox x:Name="TextBoxTotalPrice" Height="24" Margin="329,303,23,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
         <Label x:Name="LabelDateOfPurchase" Content="Dato" Margin="272,27,114,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.316,0.436"/>
         <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" Margin="272,51,23,0" VerticalAlignment="Top" >
             <DatePicker.Resources>
@@ -30,8 +30,8 @@
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonAdd" Content="Opret ordre" Margin="184,295,161,0" VerticalAlignment="Top" Click="AddButton_Click"/>
-        <Button x:Name="ButtonAdd_Product" Content="Tilføj vare" Margin="17,266,328,0" VerticalAlignment="Top" Click="ButtonAdd_Product_Click"/>
-
+        <Button x:Name="ButtonAdd" Content="Opret ordre" Margin="184,307,161,0" VerticalAlignment="Top" Click="AddButton_Click"/>
+        <Button x:Name="ButtonAdd_Product" Content="Tilføj vare" Margin="17,307,328,0" VerticalAlignment="Top" Click="ButtonAdd_Product_Click"/>
+        <ComboBox x:Name="ComboBoxOfferSelection" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="431" SelectionChanged="ComboBoxOfferSelection_SelectionChanged"/>
     </Grid>
 </Window>

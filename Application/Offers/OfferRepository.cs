@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Offers;
+using Domain;
 
-namespace Application.Offers
+namespace Application
 {
     public class OfferRepository
     {
@@ -14,12 +14,12 @@ namespace Application.Offers
         //Methods
         public void AddOffer(Offer offer)
         {
-            offer.AddOffer(offer.Customer, offer.DateOfOffer, offer.DateOfOfferExpiration, offer.TotalPrice);
+            offer.AddOffer(offer.Customer, offer.DateOfOffer, offer.TotalPrice);
         }
 
         public void EditOffer(Offer offer)
         {
-            offer.EditOffer(offer.OfferID, offer.Customer, offer.DateOfOffer, offer.DateOfOfferExpiration, offer.TotalPrice);
+            offer.EditOffer(offer.OfferID, offer.Customer, offer.DateOfOffer, offer.TotalPrice);
         }
 
         public void DeleteOffer(int offerID)
@@ -34,7 +34,7 @@ namespace Application.Offers
 
         public List<Offer> DisplaySpecificOffers(Offer offer)
         {
-            return offer.GetSpecificOffers(offer.OfferID, offer.Customer, offer.DateOfOffer, offer.DateOfOfferExpiration, offer.TotalPrice);
+            return offer.GetSpecificOffers(offer.OfferID, offer.Customer, offer.DateOfOffer, offer.TotalPrice);
         }
         public Offer DisplayOffer(int offerID)
         {

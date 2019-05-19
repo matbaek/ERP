@@ -46,12 +46,20 @@ namespace ERP.Orders
         private void Update()
         {
             List<Product> items = productRepository.DisplayProducts();
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ProductAmount == 0)
+                {
+                    items.RemoveAt(i);
+                }
+            }
             Products.ItemsSource = items;
         }
 
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            WindowProductAmount wpa = new WindowProductAmount();
+            WindowProductAmount wpa = new WindowProductAmount(product);
             wpa.ShowDialog();
             if(sendProduct)
             {

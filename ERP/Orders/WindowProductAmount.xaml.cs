@@ -22,14 +22,16 @@ namespace ERP.Orders
     public partial class WindowProductAmount : Window
     {
         private double amount;
+        private Product product = new Product();
 
         public delegate void SendProductAmount(double productAmount, bool checkProduct);
         public static event SendProductAmount eventSendProductAmount;
 
-        public WindowProductAmount()
+        public WindowProductAmount(Product product)
         {
             InitializeComponent();
             TextBoxProductAmount.Focus();
+            this.product = product;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -40,8 +42,18 @@ namespace ERP.Orders
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             amount = double.Parse(TextBoxProductAmount.Text);
-            eventSendProductAmount(amount, true);
-            this.Close();
+               
+            if (amount <= product.ProductAmount)
+            {
+                eventSendProductAmount(amount, true);
+                this.Close();
+            }
+            else
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Så mange vare er der ikke på lager";
+                wsd.ShowDialog();
+            }
         }
     }
 }

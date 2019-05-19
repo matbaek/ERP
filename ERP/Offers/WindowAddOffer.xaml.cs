@@ -12,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Domain;
-using Domain.Offers;
 using Application;
-using Application.Offers;
 
 namespace ERP.Offers
 {
@@ -46,13 +44,13 @@ namespace ERP.Offers
             {
                 offer.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 offer.DateOfOffer = DateTime.Parse(TextBoxDateOfOffer.Text);
-                offer.DateOfOfferExpiration = DateTime.Parse(TextBoxDateOfOffer.Text); //Skal lige laves om er bare det samme som DateOfOffer lige nu
                 offerRepository.AddOffer(offer);
 
                 for (int i = 0; i < orderlines.Count; i++)
                 {
-                    orderlines[i].ID = offerRepository.DisplayLastOfferID();
-                    orderline.ID = orderlines[i].ID;
+                    orderlines[i].OfferID = offerRepository.DisplayLastOfferID();
+                    orderline.OfferID = orderlines[i].OfferID;
+                    orderline.OrderID = 0;
                     orderline.Product = orderlines[i].Product;
                     orderline.Amount = orderlines[i].Amount;
                     orderlineRepository.AddOrderline(orderline);
@@ -78,7 +76,7 @@ namespace ERP.Offers
 
         void WindowPickProductOffer_eventSendProduct(Product item, double amount)
         {
-            orderlines.Add(new Orderline(0, 0, item, amount));
+            orderlines.Add(new Orderline(0, 0, offer.OfferID, item, amount));
 
             Orderlines.ItemsSource = orderlines;
 

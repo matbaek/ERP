@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Domain;
 
 namespace ERP.Offers
 {
@@ -20,14 +21,16 @@ namespace ERP.Offers
     public partial class WindowPickProductAmountOffer : Window
     {
         private double amount;
+        private Product product = new Product();
 
         public delegate void SendProductAmountOffer(double productAmount, bool checkProduct);
         public static event SendProductAmountOffer eventSendProductAmountOffer;
 
-        public WindowPickProductAmountOffer()
+        public WindowPickProductAmountOffer(Product product)
         {
             InitializeComponent();
             TextBoxProductAmount.Focus();
+            this.product = product;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -38,8 +41,18 @@ namespace ERP.Offers
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             amount = double.Parse(TextBoxProductAmount.Text);
-            eventSendProductAmountOffer(amount, true);
-            this.Close();
+
+            if (amount <= product.ProductAmount)
+            {
+                eventSendProductAmountOffer(amount, true);
+                this.Close();
+            }
+            else
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Så mange vare er der ikke på lager";
+                wsd.ShowDialog();
+            }
         }
     }
 }

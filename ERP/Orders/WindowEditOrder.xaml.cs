@@ -34,7 +34,7 @@ namespace ERP.Orders
             TextBoxCustomer.Text = order.Customer.CompanyName;
             TextBoxTotalPrice.Text = order.TotalPrice.ToString();
             TextBoxDateOfPurchase.Text = order.DateOfPurchase.ToString();
-            orderlines = orderlineRepository.DisplayOrderlines(order);
+            orderlines = orderlineRepository.DisplayOrderlines(order, new Offer());
             customer = order.Customer;
 
             Orderlines.ItemsSource = orderlines;
