@@ -16,6 +16,7 @@
                     <GridViewColumn Header="Kunde" Width="150" DisplayMemberBinding="{Binding Path=Customer.CompanyName}" />
                     <GridViewColumn Header="Købsdato" Width="100" DisplayMemberBinding="{Binding Path=DateOfPurchase, StringFormat={}{0:dd/MM/yyyy}}" />
                     <GridViewColumn Header="Samlet pris" Width="75" DisplayMemberBinding="{Binding Path=TotalPrice}" />
+                    <GridViewColumn Header="Status" Width="75" DisplayMemberBinding="{Binding Path=Active}" />
                 </GridView>
             </ListView.View>
         </ListView>

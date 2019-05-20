@@ -14,12 +14,12 @@ namespace Application
         //Methods
         public void AddOrder(Order order)
         {
-            order.AddOrder(order.Customer, order.DateOfPurchase, order.TotalPrice);
+            order.AddOrder(order.Customer, order.DateOfPurchase, order.TotalPrice, order.Active);
         }
 
         public void EditOrder(Order order)
         {
-            order.EditOrder(order.OrderID, order.Customer, order.DateOfPurchase, order.TotalPrice);
+            order.EditOrder(order.OrderID, order.Customer, order.DateOfPurchase, order.TotalPrice, order.Active);
         }
 
         public void DeleteOrder(int orderID)
@@ -34,7 +34,7 @@ namespace Application
 
         public List<Order> DisplaySpecificOrders(Order order)
         {
-            return order.GetSpecificOrders(order.OrderID, order.Customer, order.DateOfPurchase, order.TotalPrice);
+            return order.GetSpecificOrders(order.OrderID, order.Customer, order.DateOfPurchase, order.TotalPrice, order.Active);
         }
         public Order DisplayOrder(int orderID)
         {

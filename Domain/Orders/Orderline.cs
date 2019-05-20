@@ -13,16 +13,14 @@ namespace Domain
     {
         public int OrderlineNumber { get; set; }
         public int OrderID { get; set; }
-        public int OfferID{ get; set; }
         public Product Product { get; set; }
         public double Amount { get; set; }
 
 
-        public Orderline(int orderlineNumber, int orderID, int offerID, Product product, double amount)
+        public Orderline(int orderlineNumber, int orderID, Product product, double amount)
         {
             this.OrderlineNumber = orderlineNumber;
             this.OrderID = orderID;
-            this.OfferID = offerID;
             this.Product = product;
             this.Amount = amount;
         }
@@ -31,7 +29,7 @@ namespace Domain
 
         }
 
-        public void AddOrderline(int orderlineNumber, int orderID, int offerID, Product product, double amount)
+        public void AddOrderline(int orderlineNumber, int orderID, Product product, double amount)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -40,7 +38,6 @@ namespace Domain
                 SqlCommand command = new SqlCommand("AddOrderlines", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("OrderID", orderID);
-                command.Parameters.AddWithValue("OfferID", offerID);
                 command.Parameters.AddWithValue("ProductID", product.ProductID);
                 command.Parameters.AddWithValue("Amount", amount);
 
@@ -49,7 +46,7 @@ namespace Domain
             }
         }
 
-        public void EditOrderline(int orderlineNumber, int orderID, int offerID, Product product, double amount)
+        public void EditOrderline(int orderlineNumber, int orderID, Product product, double amount)
         {
 
         }
@@ -59,7 +56,7 @@ namespace Domain
             return null;
         }
 
-        public List<Orderline> GetOrderlines(int orderID, int offerID)
+        public List<Orderline> GetOrderlines(int orderID)
         {
             List<Orderline> orderlines = new List<Orderline>();
             Product tempProduct = new Product();
@@ -71,7 +68,6 @@ namespace Domain
                 SqlCommand command = new SqlCommand("ShowOrderLines", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@OrderID", orderID);
-                command.Parameters.AddWithValue("@OfferID", offerID);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -79,12 +75,11 @@ namespace Domain
                 {
                     while (reader.Read())
                     {
-                        int orderlineID = int.Parse(reader["LineID"].ToString());
+                        int orderlineID = int.Parse(reader["OrderlineID"].ToString());
                         int _orderID = int.Parse(reader["OrderID"].ToString());
-                        int _offerID = int.Parse(reader["OfferID"].ToString());
                         Product product = tempProduct.GetProduct(int.Parse(reader["ProductID"].ToString()));
                         double amount = double.Parse(reader["Amount"].ToString());
-                        orderlines.Add(new Orderline(orderlineID, _orderID, _offerID, product, amount));
+                        orderlines.Add(new Orderline(orderlineID, _orderID, product, amount));
                     }
                 }
             }

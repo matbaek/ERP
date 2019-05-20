@@ -34,18 +34,26 @@ namespace ERP.Orders
             TextBoxCustomer.Text = order.Customer.CompanyName;
             TextBoxTotalPrice.Text = order.TotalPrice.ToString();
             TextBoxDateOfPurchase.Text = order.DateOfPurchase.ToString();
-            orderlines = orderlineRepository.DisplayOrderlines(order, new Offer());
+            orderlines = orderlineRepository.DisplayOrderlines(order);
             customer = order.Customer;
+            if (order.Active == true)
+            {
+                RadioButtonIsOrder.IsChecked = true;
+            }
+            else
+            {
+                RadioButtonIsOffer.IsChecked = true;
+            }
 
             Orderlines.ItemsSource = orderlines;
-            
+
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             WindowShowDialog wsd = new WindowShowDialog();
-            
+
             if (double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
             {
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
@@ -80,5 +88,6 @@ namespace ERP.Orders
         {
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
         }
+
     }
 }

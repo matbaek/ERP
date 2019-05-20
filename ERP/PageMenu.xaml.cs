@@ -54,11 +54,5 @@ namespace ERP
         {
 
         }
-
-        private void ButtonOffer_Click(object sender, RoutedEventArgs e)
-        {
-            Offers.PageOffer po2 = new Offers.PageOffer();
-            this.NavigationService.Navigate(po2);
-        }
     }
 }

@@ -15,21 +15,23 @@ namespace Domain
         public Customer Customer { get; set; }
         public DateTime DateOfPurchase { get; set; }
         public double TotalPrice { get; set; }
+        public bool Active { get; set; }
 
         //Methods
 
         public Order() { }
 
-        public Order(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
+        public Order(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
             this.OrderID = orderID;
             this.Customer = customer;
             this.DateOfPurchase = dateOfPurchase;
             this.TotalPrice = totalPrice;
+            this.Active = active;
 
         }
 
-        public void AddOrder(Customer customer, DateTime dateOfPurchase, double totalPrice)
+        public void AddOrder(Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -40,13 +42,14 @@ namespace Domain
                 command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("DateOfPurchase", dateOfPurchase);
                 command.Parameters.AddWithValue("TotalPrice", totalPrice);
+                command.Parameters.AddWithValue("Active", active);
 
                 command.ExecuteNonQuery();
                 connection.Close();
             }
         }
 
-        public void EditOrder(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
+        public void EditOrder(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -58,6 +61,7 @@ namespace Domain
                 command.Parameters.AddWithValue("CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("DateOfPurchase", dateOfPurchase);
                 command.Parameters.AddWithValue("TotalPrice", totalPrice);
+                command.Parameters.AddWithValue("Active", active);
 
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -101,7 +105,8 @@ namespace Domain
                         Customer customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
                         double totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        orders.Add(new Order(orderID, customer, dateOfPurchase, totalPrice));
+                        bool active = bool.Parse(reader["Active"].ToString());
+                        orders.Add(new Order(orderID, customer, dateOfPurchase, totalPrice, active));
                     }
                 }
             }
@@ -109,7 +114,7 @@ namespace Domain
             return orders;
         }
 
-        public List<Order> GetSpecificOrders(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice)
+        public List<Order> GetSpecificOrders(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
             List<Order> orders = new List<Order>();
             Customer tempCustomer = new Customer();
@@ -125,6 +130,7 @@ namespace Domain
                 command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
                 command.Parameters.AddWithValue("@DateOfPurchase", dateOfPurchase);
                 command.Parameters.AddWithValue("@TotalPrice", totalPrice);
+                command.Parameters.AddWithValue("Active", active);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -136,7 +142,8 @@ namespace Domain
                         Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
                         DateTime _dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
                         double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        orders.Add(new Order(_orderID, _customer, _dateOfPurchase, _totalPrice));
+                        active = bool.Parse(reader["Active"].ToString());
+                        orders.Add(new Order(orderID, customer, dateOfPurchase, totalPrice, active));
                     }
                 }
             }
@@ -164,10 +171,11 @@ namespace Domain
                     while (reader.Read())
                     {
                         int _orderID = int.Parse(reader["OrderID"].ToString());
-                        Customer _customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
-                        DateTime _dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
-                        double _totalPrice = double.Parse(reader["TotalPrice"].ToString());
-                        order = new Order(_orderID, _customer, _dateOfPurchase, _totalPrice);
+                        Customer customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
+                        DateTime dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
+                        double totalPrice = double.Parse(reader["TotalPrice"].ToString());
+                        bool active = bool.Parse(reader["Active"].ToString());
+                        order = new Order(_orderID, customer, dateOfPurchase, totalPrice, active);
                     }
                 }
             }

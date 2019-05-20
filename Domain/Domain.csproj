@@ -44,7 +44,6 @@
     <Compile Include="Database.cs" />
     <Compile Include="Customer\Customer.cs" />
     <Compile Include="DB\Database.cs" />
-    <Compile Include="Offers\Offer.cs" />
     <Compile Include="Orders\Order.cs" />
     <Compile Include="Orders\Orderline.cs" />
     <Compile Include="Stock\ProductionBatch.cs" />

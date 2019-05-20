@@ -22,21 +22,12 @@ namespace ERP.Orders
         private List<Object> tempList = new List<Object>();
         private ProductRepository productRepository = new ProductRepository();
         private Product product = new Product();
-        private OfferRepository offerRepository = new OfferRepository();
-        private List<Offer> offers = new List<Offer>();
-        private Offer offer = new Offer();
         public WindowAddOrder()
         {
             InitializeComponent();
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
             UpdateTotalPrice();
-
-            offers = offerRepository.DisplayOffers();
-            for (int i = 0; i < offers.Count; i++)
-            {
-                ComboBoxOfferSelection.Items.Add($"{offers[i].OfferID} | {offers[i].Customer} | {offers[i].TotalPrice}");
-            }
         }
 
 
@@ -48,20 +39,30 @@ namespace ERP.Orders
             {
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
+                if (RadioButtonIsOrder.IsChecked == true)
+                {
+                    order.Active = true;
+                }
+                else if (RadioButtonIsOffer.IsChecked == true)
+                {
+                    order.Active = false;
+                }
                 orderRepository.AddOrder(order);
 
                 for (int i = 0; i < orderlines.Count; i++)
                 {
                     orderlines[i].OrderID = orderRepository.DisplayLastOrderID();
                     orderline.OrderID = orderlines[i].OrderID;
-                    orderline.OfferID = 0;
                     orderline.Product = orderlines[i].Product;
                     orderline.Amount = orderlines[i].Amount;
                     orderlineRepository.AddOrderline(orderline);
 
-                    product = orderline.Product;
-                    product.ProductAmount -= orderline.Amount;
-                    productRepository.EditProduct(product);
+                    if (!order.Active)
+                    {
+                        product = orderline.Product;
+                        product.ProductAmount -= orderline.Amount;
+                        productRepository.EditProduct(product);
+                    }
 
                 }
 
@@ -86,7 +87,7 @@ namespace ERP.Orders
 
         void WindowPickProduct_eventSendProduct(Product item, double amount)
         {
-            orderlines.Add(new Orderline(0, order.OrderID, 0, item, amount));
+            orderlines.Add(new Orderline(0, order.OrderID, item, amount));
             
             Orderlines.ItemsSource = orderlines;
 
@@ -119,15 +120,6 @@ namespace ERP.Orders
         {
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
             UpdateTotalPrice();
-        }
-
-        private void ComboBoxOfferSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string[] comboBoxOfferSelection = ComboBoxOfferSelection.SelectedItem.ToString().Split('|');
-            TextBoxCustomer.Text = comboBoxOfferSelection[1].Substring(0, comboBoxOfferSelection[1].Length - 1);
-
-            offer.OfferID = int.Parse(comboBoxOfferSelection[0].Substring(0, comboBoxOfferSelection[0].Length - 1));
-            Orderlines.ItemsSource = orderlineRepository.DisplayOrderlines(new Order(), offer);
         }
     }
 }
