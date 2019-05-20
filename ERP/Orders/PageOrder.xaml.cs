@@ -25,6 +25,7 @@ namespace ERP.Orders
     {
         private OrderRepository orderRepository = new OrderRepository();
         private Order order;
+        private List<Order> orders = new List<Order>();
 
         public PageOrder()
         {
@@ -91,15 +92,23 @@ namespace ERP.Orders
 
         private void Update()
         {
-            List<Order> items = orderRepository.DisplayOrders();
-            Orders.ItemsSource = items;
+            orders = orderRepository.DisplayOrders();
+            List<Object> tempList = new List<Object>();
+            for (int i = 0; i < orders.Count; i++)
+            {
+                string tempString = string.Empty;
+                if(orders[i].Active == true) { tempString = "Order"; } else { tempString = "Tilbud"; }
+                tempList.Add(new { OrderID = orders[i].OrderID, Customer = orders[i].Customer.CompanyName, DateOfPurchase = orders[i].DateOfPurchase, TotalPrice = orders[i].TotalPrice, Status = tempString });
+            }
+
+            Orders.ItemsSource = tempList;
         }
 
         private void Orders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((Order)(Orders.SelectedItem) != null)
+            if ((Object)(Orders.SelectedItem) != null)
             {
-                order = ((Order)Orders.SelectedItem);
+                order = orders[Orders.SelectedIndex];
             }
         }
 

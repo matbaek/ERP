@@ -48,7 +48,20 @@ namespace Domain
 
         public void EditOrderline(int orderlineNumber, int orderID, Product product, double amount)
         {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
+                SqlCommand command = new SqlCommand("EditOrderline", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("OrderlineID", orderlineNumber);
+                command.Parameters.AddWithValue("OrderID", orderID);
+                command.Parameters.AddWithValue("ProductID", product.ProductID);
+                command.Parameters.AddWithValue("Amount", amount);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         public Orderline GetOrderline(int orderlineNumber)
@@ -89,7 +102,17 @@ namespace Domain
 
         public void DeleteOrderline(int orderlineNumber)
         {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
+                SqlCommand command = new SqlCommand("DeleteOrderline", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@OrderlineID", orderlineNumber);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }  
 }

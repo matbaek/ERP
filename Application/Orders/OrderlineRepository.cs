@@ -24,17 +24,12 @@ namespace Application
 
         public void DeleteOrderline(int orderlineID)
         {
-
+            orderline.DeleteOrderline(orderlineID);
         }
 
         public List<Orderline> DisplayOrderlines(Order order)
         {
             return orderline.GetOrderlines(order.OrderID);
-        }
-
-    public Orderline DisplayOrderline(int orderlineNumber)
-        {
-            return orderline.GetOrderline(orderlineNumber);
         }
     }
 }

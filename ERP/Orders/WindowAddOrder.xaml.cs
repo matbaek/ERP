@@ -19,7 +19,6 @@ namespace ERP.Orders
         private Order order = new Order();
         private Orderline orderline = new Orderline();
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
-        private List<Object> tempList = new List<Object>();
         private ProductRepository productRepository = new ProductRepository();
         private Product product = new Product();
         public WindowAddOrder()
@@ -35,7 +34,7 @@ namespace ERP.Orders
         {
             WindowShowDialog wsd = new WindowShowDialog();
 
-            if (double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null)
+            if (double.TryParse(TextBoxTotalPrice.Text, out double resultTotalPrice) && TextBoxDateOfPurchase.SelectedDate != null && (RadioButtonIsOrder.IsChecked == true || RadioButtonIsOffer.IsChecked == true))
             {
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
@@ -57,7 +56,7 @@ namespace ERP.Orders
                     orderline.Amount = orderlines[i].Amount;
                     orderlineRepository.AddOrderline(orderline);
 
-                    if (!order.Active)
+                    if (order.Active == true)
                     {
                         product = orderline.Product;
                         product.ProductAmount -= orderline.Amount;
@@ -65,7 +64,6 @@ namespace ERP.Orders
                     }
 
                 }
-
 
                 wsd.LabelShowDialog.Content = "Ordren blev tilføjet";
                 wsd.ShowDialog();

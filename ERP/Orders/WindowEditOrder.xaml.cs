@@ -28,24 +28,30 @@ namespace ERP.Orders
         private Orderline orderline = new Orderline();
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
         private Domain.Customer customer = new Domain.Customer();
+        private ProductRepository productRepository = new ProductRepository();
+        private Product product = new Product();
         public WindowEditOrder(Order order)
         {
             InitializeComponent();
+            WindowProductAmount.eventSendProductAmount += WindowProductAmount_eventSendProductAmount;
+
+            this.order = order;
             TextBoxCustomer.Text = order.Customer.CompanyName;
             TextBoxTotalPrice.Text = order.TotalPrice.ToString();
             TextBoxDateOfPurchase.Text = order.DateOfPurchase.ToString();
-            orderlines = orderlineRepository.DisplayOrderlines(order);
             customer = order.Customer;
             if (order.Active == true)
             {
                 RadioButtonIsOrder.IsChecked = true;
+                RadioButtonIsOffer.IsEnabled = false;
             }
             else
             {
                 RadioButtonIsOffer.IsChecked = true;
+                Orderlines.IsEnabled = true;
             }
 
-            Orderlines.ItemsSource = orderlines;
+            Update();
 
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
         }
@@ -58,7 +64,26 @@ namespace ERP.Orders
             {
                 order.TotalPrice = double.Parse(TextBoxTotalPrice.Text);
                 order.DateOfPurchase = DateTime.Parse(TextBoxDateOfPurchase.Text);
+                if (RadioButtonIsOrder.IsChecked == true)
+                {
+                    order.Active = true;
+                }
+                else if (RadioButtonIsOffer.IsChecked == true)
+                {
+                    order.Active = false;
+                }
                 orderRepository.EditOrder(order);
+
+                for (int i = 0; i < orderlines.Count; i++)
+                {
+                    if (order.Active == true)
+                    {
+                        product = orderline.Product;
+                        product.ProductAmount -= orderline.Amount;
+                        productRepository.EditProduct(product);
+                    }
+
+                }
 
                 wsd.LabelShowDialog.Content = "Ordren blev redigeret";
                 wsd.ShowDialog();
@@ -86,8 +111,31 @@ namespace ERP.Orders
 
         private void Update()
         {
+            orderlines = orderlineRepository.DisplayOrderlines(order);
+            Orderlines.ItemsSource = orderlines;
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
         }
+        
+        private void Orderlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((Orderline)Orderlines.SelectedItem) != null)
+            {
+                orderline = ((Orderline)Orderlines.SelectedItem);
+                product = orderline.Product;
+            }
+        }
 
+        private void Orderlines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            WindowProductAmount wpa = new WindowProductAmount(product);
+            wpa.ShowDialog();
+            Update();
+        }
+
+        void WindowProductAmount_eventSendProductAmount(double amount, bool sendProduct)
+        {
+            orderline = new Orderline(orderline.OrderlineNumber, orderline.OrderID, orderline.Product, amount);
+            orderlineRepository.EditOrderline(orderline);
+        }
     }
 }
