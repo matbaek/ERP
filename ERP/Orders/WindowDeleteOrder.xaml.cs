@@ -22,6 +22,7 @@ namespace ERP.Orders
     public partial class WindowDeleteOrder : Window
     {
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
+        private ProductRepository productRepository = new ProductRepository();
         private OrderRepository orderRepository = new OrderRepository();
         private Order order;
         public WindowDeleteOrder(Order order)
@@ -36,6 +37,9 @@ namespace ERP.Orders
             List<Orderline> orderlines = orderlineRepository.DisplayOrderlines(order);
             for (int i = 0; i < orderlines.Count; i++)
             {
+                Product product = orderlines[i].Product;
+                product.ProductAmount += orderlines[i].Amount;
+                productRepository.EditProduct(product);
                 orderlineRepository.DeleteOrderline(orderlines[i].OrderlineNumber);
             }
             orderRepository.DeleteOrder(order.OrderID);

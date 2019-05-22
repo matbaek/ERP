@@ -5,22 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERP.Stock"
         mc:Ignorable="d"
-        Title="Rediger råvare" Height="310" Width="310"
-        WindowStartupLocation="CenterScreen">
+        Title="Rediger Råvare" Height="214.821" Width="310" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label x:Name="LabelEditRawProduct" Content="Rediger Råvare" HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxName" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TextBoxWeight" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272"/>
-        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="272" >
+        <Label x:Name="LabelEditRawProduct" Content="Rediger råvare" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vægt" Margin="10,96,248,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="Navn" Margin="10,32,248,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxName" Height="23" Margin="10,58,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxWeight" Height="23" Margin="10,120,160,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="LabelDateOfPurchase" Content="Dato" Margin="160,93,103,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.316,0.436"/>
+        <DatePicker x:Name="TextBoxDateOfPurchase" Height="25" Margin="160,119,8,0" VerticalAlignment="Top" >
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <Button x:Name="ButtonEdit" Content="Rediger råvare" HorizontalAlignment="Left" Margin="105,237,0,0" VerticalAlignment="Top" Width="82" Click="ButtonEdit_Click"/>
-        <Label x:Name="Navn" Content="Navn" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Vægt" Content="Vægt" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Dato" Content="Dato" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonEdit" Content="Rediger råvare" Margin="110,155,110,0" VerticalAlignment="Top" Click="ButtonEdit_Click"/>
     </Grid>
 </Window>

@@ -13,7 +13,6 @@ namespace Domain
         //Property
         public int CustomerID{ get; set; }
         public string CompanyName { get; set; }
-        public string ContactPerson { get; set; }
         public string CustomerAddress { get; set; }
         public string CustomerTelephone { get; set; }
         public string CustomerZip { get; set; }
@@ -21,18 +20,17 @@ namespace Domain
 
         public Customer() { }
 
-        public Customer(int customerID, string companyName, string contactPerson, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public Customer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
         {
             this.CustomerID = customerID;
             this.CompanyName = companyName;
-            this.ContactPerson = contactPerson;
             this.CustomerAddress = customerAddress;
             this.CustomerTelephone = customerTelephone;
             this.CustomerZip = customerZip;
             this.CustomerTown = customerTown;
         }
 
-        public void AddCustomer(string companyName, string contactPerson, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public void AddCustomer(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -41,7 +39,6 @@ namespace Domain
                 SqlCommand command = new SqlCommand("AddCustomer", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CompanyName", companyName);
-                command.Parameters.AddWithValue("@ContactPerson", contactPerson);
                 command.Parameters.AddWithValue("@CustomerAddress", customerAddress);
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
@@ -52,7 +49,7 @@ namespace Domain
             }
         }
 
-        public void EditCustomer(int customerID, string companyName, string contactPerson, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public void EditCustomer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -62,7 +59,6 @@ namespace Domain
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CustomerID", customerID);
                 command.Parameters.AddWithValue("@CompanyName", companyName);
-                command.Parameters.AddWithValue("@ContactPerson", contactPerson);
                 command.Parameters.AddWithValue("@CustomerAddress", customerAddress);
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
@@ -107,12 +103,11 @@ namespace Domain
                     {
                         int customerID = int.Parse(reader["CustomerID"].ToString());
                         string companyName = reader["CompanyName"].ToString();
-                        string contactPerson = reader["ContactPerson"].ToString();
                         string customerAddress = reader["CustomerAddress"].ToString();
                         string customerTelephone = reader["CustomerTelephone"].ToString();
                         string customerZip = reader["CustomerZip"].ToString();
                         string customerTown = reader["CustomerTown"].ToString();
-                        customers.Add(new Customer(customerID, companyName, contactPerson, customerAddress, customerTelephone, customerZip, customerTown));
+                        customers.Add(new Customer(customerID, companyName, customerAddress, customerTelephone, customerZip, customerTown));
                     }
                 }
             }
@@ -120,7 +115,7 @@ namespace Domain
             return customers;
         }
 
-        public List<Customer> GetSpecificCustomers(string companyName, string contactPerson, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public List<Customer> GetSpecificCustomers(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
         {
             List<Customer> customers = new List<Customer>();
 
@@ -132,7 +127,6 @@ namespace Domain
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@CompanyName", companyName);
-                command.Parameters.AddWithValue("@ContactPerson", contactPerson);
                 command.Parameters.AddWithValue("@CustomerAddress", customerAddress);
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
@@ -146,12 +140,11 @@ namespace Domain
                     {
                         int _customerID = int.Parse(reader["CustomerID"].ToString());
                         string _companyName = reader["CompanyName"].ToString();
-                        string _contactPerson = reader["contactPerson"].ToString();
                         string _customerAddress = reader["CustomerAddress"].ToString();
                         string _customerTelephone = reader["CustomerTelephone"].ToString();
                         string _customerZip = reader["CustomerZip"].ToString();
                         string _customerTown = reader["CustomerTown"].ToString();
-                        customers.Add(new Customer(_customerID, _companyName, _contactPerson, _customerAddress, _customerTelephone, _customerZip, _customerTown));
+                        customers.Add(new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown));
                     }
                 }
             }
@@ -179,12 +172,11 @@ namespace Domain
                     {
                         int _customerID = int.Parse(reader["CustomerID"].ToString());
                         string _companyName = reader["CompanyName"].ToString();
-                        string _contactPerson = reader["contactPerson"].ToString();
                         string _customerAddress = reader["CustomerAddress"].ToString();
                         string _customerTelephone = reader["CustomerTelephone"].ToString();
                         string _customerZip = reader["CustomerZip"].ToString();
                         string _customerTown = reader["CustomerTown"].ToString();
-                        customer = new Customer(_customerID, _companyName, _contactPerson, _customerAddress, _customerTelephone, _customerZip, _customerTown);
+                        customer = new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown);
                     }
                 }
             }

@@ -55,7 +55,8 @@ namespace ERP.Orders
                     order.Active = false;
                 }
                 int comboBoxNumber = ComboBoxOffers.SelectedIndex;
-                if (comboBoxNumber == 0) {
+                if (comboBoxNumber == 0 || comboBoxNumber == -1)
+                {
                     orderRepository.AddOrder(order);
                 }
                 else

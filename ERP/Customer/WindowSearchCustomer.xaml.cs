@@ -35,7 +35,7 @@ namespace ERP.Customer
             Domain.Customer customer = new Domain.Customer();
             WindowShowDialog wsd = new WindowShowDialog();
 
-            if (TextBoxCompanyName != null || TextBoxContactPerson != null || TextBoxCustomerAddress != null || TextBoxCustomerTown != null || TextBoxCustomerZip != null || TextBoxCustomerTelephone != null)
+            if (TextBoxCompanyName != null || TextBoxCustomerAddress != null || TextBoxCustomerTown != null || TextBoxCustomerZip != null || TextBoxCustomerTelephone != null)
             {
                 if (TextBoxCompanyName.Text.ToString() == "Firma navn")
                 {
@@ -44,15 +44,6 @@ namespace ERP.Customer
                 else
                 {
                     customer.CompanyName = TextBoxCompanyName.Text.ToString();
-                }
-
-                if (TextBoxContactPerson.Text.ToString() == "Kontakt person")
-                {
-                    customer.ContactPerson = string.Empty;
-                }
-                else
-                {
-                    customer.ContactPerson = TextBoxContactPerson.Text.ToString();
                 }
 
                 if (TextBoxCustomerAddress.Text.ToString() == "Adresse")
@@ -97,13 +88,9 @@ namespace ERP.Customer
             }
             else
             {
-                wsd.LabelShowDialog.Content = "Der var en fejl i 'Firma navn', 'Kontakt person', 'Adresse', 'By', 'Postnr' eller 'Telefon'";
+                wsd.LabelShowDialog.Content = "Der var en fejl i 'Firma navn', 'Adresse', 'By', 'Postnr' eller 'Telefon'";
                 wsd.ShowDialog();
             }
-        }
-        private void TextBoxContactPerson_TextChanged()
-        {
-
         }
     }
 }

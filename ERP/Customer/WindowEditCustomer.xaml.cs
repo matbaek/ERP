@@ -28,7 +28,6 @@ namespace ERP.Customer
             customer = customerRepository.DisplayCustomer(customerID);
             InitializeComponent();
             TextBoxCompanyName.Text = customer.CompanyName;
-            TextBoxContactPerson.Text = customer.ContactPerson.ToString();
             TextBoxCustomerAddress.Text = customer.CustomerAddress.ToString();
             TextBoxCustomerTelephone.Text = customer.CustomerTelephone.ToString();
             TextBoxCustomerZip.Text = customer.CustomerZip.ToString();
@@ -39,10 +38,9 @@ namespace ERP.Customer
         {
             WindowShowDialog wsd = new WindowShowDialog();
 
-            if (TextBoxContactPerson != null && TextBoxCustomerAddress != null && TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTown != null)
+            if (TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTown != null)
             {
                 customer.CompanyName = TextBoxCompanyName.Text;
-                customer.ContactPerson = TextBoxContactPerson.Text;
                 customer.CustomerAddress = TextBoxCustomerAddress.Text;
                 customer.CustomerTelephone = TextBoxCustomerTelephone.Text;
                 customer.CustomerZip = TextBoxCustomerZip.Text;

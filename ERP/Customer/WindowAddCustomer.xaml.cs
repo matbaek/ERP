@@ -33,10 +33,9 @@ namespace ERP.Customer
             WindowShowDialog wsd = new WindowShowDialog();
             customer.CompanyName = TextBoxCompanyName.Text.ToString();
 
-            if (TextBoxContactPerson != null && TextBoxCustomerAddress != null && TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTelephone != null)
+            if (TextBoxCustomerAddress != null && TextBoxCustomerTelephone != null && TextBoxCustomerZip != null && TextBoxCustomerTelephone != null)
             {
                 customer.CompanyName = TextBoxCompanyName.Text;
-                customer.ContactPerson = TextBoxContactPerson.Text;
                 customer.CustomerAddress = TextBoxCustomerAddress.Text;
                 customer.CustomerTelephone = TextBoxCustomerTelephone.Text;
                 customer.CustomerZip = TextBoxCustomerZip.Text;
