@@ -32,10 +32,16 @@ namespace Application
             return order.GetOrders();
         }
 
+        public List<Order> DisplayNonActiveOrders()
+        {
+            return order.GetNonActiveOrders();
+        }
+
         public List<Order> DisplaySpecificOrders(Order order)
         {
             return order.GetSpecificOrders(order.OrderID, order.Customer, order.DateOfPurchase, order.TotalPrice, order.Active);
         }
+
         public Order DisplayOrder(int orderID)
         {
             return order.GetOrder(orderID);

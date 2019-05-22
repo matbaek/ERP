@@ -31,7 +31,7 @@
             </DatePicker.Resources>
         </DatePicker>
         <Button x:Name="ButtonEdit" Content="Rediger ordre" Margin="174,298,171,0" VerticalAlignment="Top" Click="EditButton_Click"/>
-        <RadioButton x:Name="RadioButtonIsOffer" Content="Tilbud" HorizontalAlignment="Left" Margin="17,262,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="RadioButtonIsOrder" Content="Ordre" HorizontalAlignment="Left" Margin="17,277,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RadioButtonIsOffer" Content="Tilbud" HorizontalAlignment="Left" Margin="17,262,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <RadioButton x:Name="RadioButtonIsOrder" Content="Ordre" HorizontalAlignment="Left" Margin="17,277,0,0" VerticalAlignment="Top" IsEnabled="False"/>
     </Grid>
 </Window>

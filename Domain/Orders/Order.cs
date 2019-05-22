@@ -114,6 +114,39 @@ namespace Domain
             return orders;
         }
 
+        public List<Order> GetNonActiveOrders()
+        {
+            List<Order> orders = new List<Order>();
+            Customer tempCustomer = new Customer();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("ShowNonActiveOrders", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@Active", false);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int orderID = int.Parse(reader["OrderID"].ToString());
+                        Customer customer = tempCustomer.GetCustomer(int.Parse(reader["CustomerID"].ToString()));
+                        DateTime dateOfPurchase = DateTime.Parse(reader["DateOfPurchase"].ToString());
+                        double totalPrice = double.Parse(reader["TotalPrice"].ToString());
+                        bool active = bool.Parse(reader["Active"].ToString());
+                        orders.Add(new Order(orderID, customer, dateOfPurchase, totalPrice, active));
+                    }
+                }
+            }
+
+            return orders;
+        }
+
         public List<Order> GetSpecificOrders(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
             List<Order> orders = new List<Order>();

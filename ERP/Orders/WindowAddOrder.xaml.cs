@@ -15,9 +15,10 @@ namespace ERP.Orders
     public partial class WindowAddOrder : Window
     {
         private OrderRepository orderRepository = new OrderRepository();
-        private List<Orderline> orderlines = new List<Orderline>();
         private Order order = new Order();
+        private List<Order> nonActiveOrders = new List<Order>();
         private Orderline orderline = new Orderline();
+        private List<Orderline> orderlines = new List<Orderline>();
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
         private ProductRepository productRepository = new ProductRepository();
         private Product product = new Product();
@@ -26,6 +27,13 @@ namespace ERP.Orders
             InitializeComponent();
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
+            
+            nonActiveOrders.AddRange(orderRepository.DisplayNonActiveOrders());
+            ComboBoxOffers.Items.Add("");
+            for (int i = 0; i < nonActiveOrders.Count; i++)
+            {
+                ComboBoxOffers.Items.Add($"{nonActiveOrders[i].OrderID}: {nonActiveOrders[i].Customer.CompanyName} - {nonActiveOrders[i].TotalPrice} kr");
+            }
             UpdateTotalPrice();
         }
 
@@ -46,7 +54,14 @@ namespace ERP.Orders
                 {
                     order.Active = false;
                 }
-                orderRepository.AddOrder(order);
+                int comboBoxNumber = ComboBoxOffers.SelectedIndex;
+                if (comboBoxNumber == 0) {
+                    orderRepository.AddOrder(order);
+                }
+                else
+                {
+                    orderRepository.EditOrder(order);
+                }
 
                 for (int i = 0; i < orderlines.Count; i++)
                 {
@@ -92,10 +107,10 @@ namespace ERP.Orders
             Update();
         }
 
-        void WindowPickCustomer_eventSendList(Domain.Customer items)
+        void WindowPickCustomer_eventSendList(Domain.Customer customer)
         {
-            TextBoxCustomer.Text = items.CompanyName;
-            order.Customer = items;
+            TextBoxCustomer.Text = customer.CompanyName;
+            order.Customer = customer;
         }
 
         private void TextBoxCustomer_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -118,6 +133,34 @@ namespace ERP.Orders
         {
             CollectionViewSource.GetDefaultView(Orderlines.ItemsSource).Refresh();
             UpdateTotalPrice();
+        }
+
+        private void ComboBoxOffers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int comboBoxNumber = ComboBoxOffers.SelectedIndex - 1;
+            if(comboBoxNumber != -1)
+            {
+                order = nonActiveOrders[comboBoxNumber];
+                TextBoxCustomer.Text = $"{nonActiveOrders[comboBoxNumber].Customer.CompanyName}";
+                TextBoxDateOfPurchase.Text = $"{nonActiveOrders[comboBoxNumber].DateOfPurchase}";
+                TextBoxTotalPrice.Text = $"{nonActiveOrders[comboBoxNumber].TotalPrice}";
+                Orderlines.ItemsSource = orderlineRepository.DisplayOrderlines(nonActiveOrders[comboBoxNumber]);
+
+                RadioButtonIsOrder.IsChecked = true;
+                RadioButtonIsOffer.IsEnabled = false;
+            }
+            else
+            {
+                order = new Order();
+                TextBoxCustomer.Text = $"";
+                TextBoxDateOfPurchase.Text = $"";
+                TextBoxTotalPrice.Text = $"";
+                Orderlines.ItemsSource = null;
+
+                RadioButtonIsOrder.IsChecked = false;
+                RadioButtonIsOffer.IsChecked = false;
+                RadioButtonIsOffer.IsEnabled = true;
+            }
         }
     }
 }
