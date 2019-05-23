@@ -28,7 +28,7 @@ namespace ERP.Orders
             WindowPickProduct.eventSendProduct += WindowPickProduct_eventSendProduct;
             WindowPickCustomer.eventSendList += WindowPickCustomer_eventSendList;
             
-            nonActiveOrders.AddRange(orderRepository.DisplayNonActiveOrders());
+            nonActiveOrders.AddRange(orderRepository.DisplayNonActiveOrders(false));
             ComboBoxOffers.Items.Add("");
             for (int i = 0; i < nonActiveOrders.Count; i++)
             {
@@ -142,10 +142,10 @@ namespace ERP.Orders
             if(comboBoxNumber != -1)
             {
                 order = nonActiveOrders[comboBoxNumber];
-                TextBoxCustomer.Text = $"{nonActiveOrders[comboBoxNumber].Customer.CompanyName}";
-                TextBoxDateOfPurchase.Text = $"{nonActiveOrders[comboBoxNumber].DateOfPurchase}";
-                TextBoxTotalPrice.Text = $"{nonActiveOrders[comboBoxNumber].TotalPrice}";
-                Orderlines.ItemsSource = orderlineRepository.DisplayOrderlines(nonActiveOrders[comboBoxNumber]);
+                TextBoxCustomer.Text = $"{order.Customer.CompanyName}";
+                TextBoxDateOfPurchase.Text = $"{order.DateOfPurchase}";
+                TextBoxTotalPrice.Text = $"{order.TotalPrice}";
+                Orderlines.ItemsSource = orderlineRepository.DisplayOrderlines(order);
 
                 RadioButtonIsOrder.IsChecked = true;
                 RadioButtonIsOffer.IsEnabled = false;

@@ -9,7 +9,6 @@ namespace Application
 {
     public class CustomerRepository
     {
-        private List<Customer> customers = new List<Customer>();
         private Customer customer = new Customer();
 
         //Metods
@@ -30,12 +29,12 @@ namespace Application
 
         public List<Customer> DisplayCustomers()
         {
-            return customers = customer.GetCustomers();
+            return customer.GetCustomers();
         }
 
         public List<Customer> DisplaySpecificCustomers(Customer customer)
         {
-            return customers = customer.GetSpecificCustomers(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
+            return customer.GetSpecificCustomers(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
         }
 
         public Customer DisplayCustomer(int customerID)

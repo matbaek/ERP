@@ -114,7 +114,7 @@ namespace Domain
             return orders;
         }
 
-        public List<Order> GetNonActiveOrders()
+        public List<Order> GetNonActiveOrders(bool status)
         {
             List<Order> orders = new List<Order>();
             Customer tempCustomer = new Customer();
@@ -126,7 +126,7 @@ namespace Domain
                 SqlCommand command = new SqlCommand("ShowNonActiveOrders", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@Active", false);
+                command.Parameters.AddWithValue("@Active", status);
 
                 SqlDataReader reader = command.ExecuteReader();
 

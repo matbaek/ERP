@@ -32,9 +32,9 @@ namespace Application
             return order.GetOrders();
         }
 
-        public List<Order> DisplayNonActiveOrders()
+        public List<Order> DisplayNonActiveOrders(bool status)
         {
-            return order.GetNonActiveOrders();
+            return order.GetNonActiveOrders(status);
         }
 
         public List<Order> DisplaySpecificOrders(Order order)

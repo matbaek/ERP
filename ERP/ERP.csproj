@@ -55,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Accounting\PageInvoice.xaml.cs">
+      <DependentUpon>PageInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\WindowAddInvoice.xaml.cs">
+      <DependentUpon>WindowAddInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\WindowMakeCreditNota.xaml.cs">
+      <DependentUpon>WindowMakeCreditNota.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Customer\PageCustomer.xaml.cs">
       <DependentUpon>PageCustomer.xaml</DependentUpon>
     </Compile>
@@ -127,6 +136,18 @@
     <Compile Include="WindowShowDialog.xaml.cs">
       <DependentUpon>WindowShowDialog.xaml</DependentUpon>
     </Compile>
+    <Page Include="Accounting\PageInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\WindowAddInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\WindowMakeCreditNota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Customer\PageCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

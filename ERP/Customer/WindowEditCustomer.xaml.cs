@@ -25,8 +25,8 @@ namespace ERP.Customer
         private Domain.Customer customer = new Domain.Customer();
         public WindowEditCustomer(int customerID)
         {
-            customer = customerRepository.DisplayCustomer(customerID);
             InitializeComponent();
+            customer = customerRepository.DisplayCustomer(customerID);
             TextBoxCompanyName.Text = customer.CompanyName;
             TextBoxCustomerAddress.Text = customer.CustomerAddress.ToString();
             TextBoxCustomerTelephone.Text = customer.CustomerTelephone.ToString();

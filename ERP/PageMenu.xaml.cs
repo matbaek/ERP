@@ -52,7 +52,8 @@ namespace ERP
 
         private void ButtonAccounting_Click(object sender, RoutedEventArgs e)
         {
-
+            Accounting.PageInvoice pi = new Accounting.PageInvoice();
+            this.NavigationService.Navigate(pi);
         }
     }
 }
