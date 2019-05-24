@@ -23,7 +23,7 @@ namespace ERP.Accounting
     public partial class PageInvoice : Page
     {
         private InvoiceRepository invoiceRepository = new InvoiceRepository();
-        private Invoice invoice;
+        private Invoice invoice = new Invoice();
         private List<Invoice> invoices = new List<Invoice>();
         public PageInvoice()
         {
@@ -33,7 +33,9 @@ namespace ERP.Accounting
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowSearchInvoice wsi = new WindowSearchInvoice();
+            wsi.ShowDialog();
+            Update();
         }
 
         private void ButtonAddInvoice_Click(object sender, RoutedEventArgs e)
@@ -45,18 +47,26 @@ namespace ERP.Accounting
 
         private void ButtonSendInvoice_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowSendInvoice wsi = new WindowSendInvoice(invoice);
+            wsi.ShowDialog();
+            Update();
         }
 
         private void ButtonMakeCreditNota_Click(object sender, RoutedEventArgs e)
         {
-            if (invoice.InvoiceID != 0)
+            if (invoice.CreditNota == true)
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Faktura er allerede lavet til en kreditnota!";
+                wsd.ShowDialog();
+            }
+            else if(invoice.InvoiceID != 0)
             {
                 WindowMakeCreditNota wec = new WindowMakeCreditNota(invoice);
                 wec.ShowDialog();
                 Update();
             }
-            else
+            else 
             {
                 WindowShowDialog wsd = new WindowShowDialog();
                 wsd.LabelShowDialog.Content = "Ingen faktura er valgt!";
@@ -83,7 +93,7 @@ namespace ERP.Accounting
             {
                 string tempCreditNota = string.Empty;
                 string tempSend = string.Empty;
-                if (invoices[i].CreditNote == true) { tempCreditNota = "Ja"; } else { tempCreditNota = "Nej"; }
+                if (invoices[i].CreditNota == true) { tempCreditNota = "Ja"; } else { tempCreditNota = "Nej"; }
                 if (invoices[i].Send == true) { tempSend = "Ja"; } else { tempSend = "Nej"; }
                 tempList.Add(new { InvoiceID = invoices[i].InvoiceID, Customer = invoices[i].Order.Customer.CompanyName, DateOfDelivery = invoices[i].DateOfDelivery, FormOfDelivery = invoices[i].FormOfDelivery, FormOfPayment = invoices[i].FormOfPayment, SendStatus = tempSend, CreditNotaStatus = tempCreditNota });
             }

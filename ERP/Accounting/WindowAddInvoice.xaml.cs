@@ -25,6 +25,7 @@ namespace ERP.Accounting
         private InvoiceRepository invoiceRepository = new InvoiceRepository();
         private Invoice invoice = new Invoice();
         private List<Order> activeOrders = new List<Order>();
+        private List<Invoice> invoices = new List<Invoice>();
         private Orderline orderline = new Orderline();
         private List<Orderline> orderlines = new List<Orderline>();
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
@@ -35,13 +36,19 @@ namespace ERP.Accounting
             InitializeComponent();
 
             activeOrders.AddRange(orderRepository.DisplayNonActiveOrders(true));
+            invoices = invoiceRepository.DisplayInvoices();
             ComboBoxOrders.Items.Add("");
+
             for (int i = 0; i < activeOrders.Count; i++)
             {
-                ComboBoxOrders.Items.Add($"{activeOrders[i].OrderID}: {activeOrders[i].Customer.CompanyName} - {activeOrders[i].TotalPrice} kr");
+                int index = invoices.FindIndex(item => item.Order.OrderID == activeOrders[i].OrderID);
+                if (index < 0)
+                {
+                    ComboBoxOrders.Items.Add($"{activeOrders[i].OrderID}: {activeOrders[i].Customer.CompanyName} - {activeOrders[i].TotalPrice} kr");
+                }
             }
 
-            ComboBoxFormOfDelivery.Items.Add("Afhentning");
+            ComboBoxFormOfDelivery.Items.Add("Afhentning"); 
             ComboBoxFormOfDelivery.Items.Add("GLS");
 
             ComboBoxFormOfPayment.Items.Add("Dankort");
@@ -72,7 +79,17 @@ namespace ERP.Accounting
             int comboBoxNumber = ComboBoxOrders.SelectedIndex - 1;
             if (comboBoxNumber != -1)
             {
-                invoice.Order = activeOrders[comboBoxNumber];
+                List<Order> tempList = new List<Order>();
+                for (int i = 0; i < activeOrders.Count; i++)
+                {
+                    int index = invoices.FindIndex(item => item.Order.OrderID == activeOrders[i].OrderID);
+                    if (index < 0)
+                    {
+                        tempList.Add(activeOrders[i]);
+                    }
+                }
+
+                invoice.Order = tempList[comboBoxNumber];
                 TextBoxCustomer.Text = $"{invoice.Order.Customer.CompanyName}";
                 TextBoxTotalPrice.Text = $"{invoice.Order.TotalPrice}";
                 Orderlines.ItemsSource = orderlineRepository.DisplayOrderlines(invoice.Order);

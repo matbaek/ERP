@@ -17,6 +17,16 @@ namespace Application
             invoice.AddInvoice(invoice.Order, invoice.DateOfDelivery, invoice.FormOfDelivery, invoice.FormOfPayment);
         }
 
+        public void EditInvoice(Invoice invoice)
+        {
+            invoice.EditInvoice(invoice.InvoiceID, invoice.Order, invoice.DateOfDelivery, invoice.FormOfDelivery, invoice.FormOfPayment, true, false);
+        }
+
+        public void SendInvoice(Invoice invoice)
+        {
+            invoice.SendInvoice(invoice, invoice.Order.Customer);
+        }
+
         public List<Invoice> DisplayInvoices()
         {
             return invoice.GetInvoices();

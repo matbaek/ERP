@@ -13,7 +13,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Path=CompanyName}" />
-                    <GridViewColumn Header="Kontakt person" Width="200" DisplayMemberBinding="{Binding Path=ContactPerson}" />
+                    <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Path=CustomerEmail}" />
                     <GridViewColumn Header="Adresse" Width="130" DisplayMemberBinding="{Binding Path=CustomerAddress}" />
                     <GridViewColumn Header="Telefonnummer" Width="90" DisplayMemberBinding="{Binding Path=CustomerTelephone}" />
                     <GridViewColumn Header="Postnummer" Width="75" DisplayMemberBinding="{Binding Path=CustomerZip}" />

@@ -14,12 +14,12 @@ namespace Application
         //Metods
         public void AddCustomer(Customer customer)
         {
-            customer.AddCustomer(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
+            customer.AddCustomer(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown, customer.CustomerEmail);
         }
 
         public void EditCustomer(Customer customer)
         {
-            customer.EditCustomer(customer.CustomerID, customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
+            customer.EditCustomer(customer.CustomerID, customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown, customer.CustomerEmail);
         }
 
         public void DeleteCustomer(int customerID)
@@ -34,7 +34,7 @@ namespace Application
 
         public List<Customer> DisplaySpecificCustomers(Customer customer)
         {
-            return customer.GetSpecificCustomers(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown);
+            return customer.GetSpecificCustomers(customer.CompanyName, customer.CustomerAddress, customer.CustomerTelephone, customer.CustomerZip, customer.CustomerTown, customer.CustomerEmail);
         }
 
         public Customer DisplayCustomer(int customerID)

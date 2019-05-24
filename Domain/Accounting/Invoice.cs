@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.Mail;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,21 +17,21 @@ namespace Domain
         public DateTime DateOfDelivery { get; set; }
         public string FormOfDelivery { get; set; }
         public string FormOfPayment { get; set; }
-        public bool CreditNote { get; set; }
+        public bool CreditNota { get; set; }
         public bool Send { get; set; }
 
         //Methods
 
         public Invoice() { }
 
-        public Invoice(int invoiceID, Order order, DateTime dateOfDelivery, string formOfDelivery, string formOfPayment, bool creditNote, bool send)
+        public Invoice(int invoiceID, Order order, DateTime dateOfDelivery, string formOfDelivery, string formOfPayment, bool creditNota, bool send)
         {
             this.InvoiceID = invoiceID;
             this.Order = order;
             this.DateOfDelivery = dateOfDelivery;
             this.FormOfDelivery = formOfDelivery;
             this.FormOfPayment = formOfPayment;
-            this.CreditNote = creditNote;
+            this.CreditNota = creditNota;
             this.Send = Send;
 
         }
@@ -53,6 +54,32 @@ namespace Domain
                 command.ExecuteNonQuery();
                 connection.Close();
             }
+        }
+
+        public void EditInvoice(int invoiceID, Order order, DateTime dateOfDelivery, string formOfDelivery, string formOfPayment, bool creditNota, bool send)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("EditInvoice", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("InvoiceID", invoiceID);
+                command.Parameters.AddWithValue("OrderID", order.OrderID);
+                command.Parameters.AddWithValue("DateOfDelivery", dateOfDelivery);
+                command.Parameters.AddWithValue("FormOfDelivery", formOfDelivery);
+                command.Parameters.AddWithValue("FormOfPayment", formOfPayment);
+                command.Parameters.AddWithValue("CreditNota", creditNota);
+                command.Parameters.AddWithValue("Send", send);
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void SendInvoice(Invoice invoice, Customer customer)
+        {
+            //Implementering af email system!
         }
 
         public List<Invoice> GetInvoices()

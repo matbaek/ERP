@@ -35,52 +35,14 @@ namespace ERP.Customer
             Domain.Customer customer = new Domain.Customer();
             WindowShowDialog wsd = new WindowShowDialog();
 
-            if (TextBoxCompanyName != null || TextBoxCustomerAddress != null || TextBoxCustomerTown != null || TextBoxCustomerZip != null || TextBoxCustomerTelephone != null)
+            if (TextBoxCompanyName != null || TextBoxCustomerEmail != null || TextBoxCustomerAddress != null || TextBoxCustomerTown != null || TextBoxCustomerZip != null || TextBoxCustomerTelephone != null)
             {
-                if (TextBoxCompanyName.Text.ToString() == "Firma navn")
-                {
-                    customer.CompanyName = string.Empty;
-                }
-                else
-                {
-                    customer.CompanyName = TextBoxCompanyName.Text.ToString();
-                }
-
-                if (TextBoxCustomerAddress.Text.ToString() == "Adresse")
-                {
-                    customer.CustomerAddress = string.Empty;
-                }
-                else
-                {
-                    customer.CustomerAddress = TextBoxCustomerAddress.Text.ToString();
-                }
-
-                if (TextBoxCustomerTown.Text.ToString() == "By")
-                {
-                    customer.CustomerTown = string.Empty;
-                }
-                else
-                {
-                    customer.CustomerTown = TextBoxCustomerTown.Text.ToString();
-                }
-
-                if (TextBoxCustomerZip.Text.ToString() == "Postnr")
-                {
-                    customer.CustomerZip = string.Empty;
-                }
-                else
-                {
-                    customer.CustomerZip = TextBoxCustomerZip.Text.ToString();
-                }
-
-                if (TextBoxCustomerTelephone.Text.ToString() == "Telefon")
-                {
-                    customer.CustomerTelephone = string.Empty;
-                }
-                else
-                {
-                    customer.CustomerTelephone = TextBoxCustomerTelephone.Text.ToString();
-                }
+                customer.CompanyName = TextBoxCompanyName.Text.ToString();
+                customer.CustomerEmail = TextBoxCustomerEmail.Text.ToString();
+                customer.CustomerAddress = TextBoxCustomerAddress.Text.ToString();
+                customer.CustomerTown = TextBoxCustomerTown.Text.ToString();
+                customer.CustomerZip = TextBoxCustomerZip.Text.ToString();
+                customer.CustomerTelephone = TextBoxCustomerTelephone.Text.ToString();
 
                 eventSendList(customerRepository.DisplaySpecificCustomers(customer));
 

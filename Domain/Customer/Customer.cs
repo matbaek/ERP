@@ -16,11 +16,12 @@ namespace Domain
         public string CustomerAddress { get; set; }
         public string CustomerTelephone { get; set; }
         public string CustomerZip { get; set; }
-        public string CustomerTown{ get; set; }
+        public string CustomerTown { get; set; }
+        public string CustomerEmail { get; set; }
 
         public Customer() { }
 
-        public Customer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public Customer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
             this.CustomerID = customerID;
             this.CompanyName = companyName;
@@ -28,9 +29,10 @@ namespace Domain
             this.CustomerTelephone = customerTelephone;
             this.CustomerZip = customerZip;
             this.CustomerTown = customerTown;
+            this.CustomerEmail = customerEmail;
         }
 
-        public void AddCustomer(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public void AddCustomer(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -43,13 +45,14 @@ namespace Domain
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
                 command.Parameters.AddWithValue("@CustomerTown", customerTown);
+                command.Parameters.AddWithValue("@Email", customerEmail);
 
                 command.ExecuteNonQuery();
                 connection.Close();
             }
         }
 
-        public void EditCustomer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public void EditCustomer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -63,6 +66,7 @@ namespace Domain
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
                 command.Parameters.AddWithValue("@CustomerTown", customerTown);
+                command.Parameters.AddWithValue("@Email", customerEmail);
 
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -107,7 +111,8 @@ namespace Domain
                         string customerTelephone = reader["CustomerTelephone"].ToString();
                         string customerZip = reader["CustomerZip"].ToString();
                         string customerTown = reader["CustomerTown"].ToString();
-                        customers.Add(new Customer(customerID, companyName, customerAddress, customerTelephone, customerZip, customerTown));
+                        string customerEmail = reader["Email"].ToString();
+                        customers.Add(new Customer(customerID, companyName, customerAddress, customerTelephone, customerZip, customerTown, customerEmail));
                     }
                 }
             }
@@ -115,7 +120,7 @@ namespace Domain
             return customers;
         }
 
-        public List<Customer> GetSpecificCustomers(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown)
+        public List<Customer> GetSpecificCustomers(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
             List<Customer> customers = new List<Customer>();
 
@@ -131,6 +136,7 @@ namespace Domain
                 command.Parameters.AddWithValue("@CustomerTelephone", customerTelephone);
                 command.Parameters.AddWithValue("@CustomerZip", customerZip);
                 command.Parameters.AddWithValue("@CustomerTown", customerTown);
+                command.Parameters.AddWithValue("@Email", customerEmail);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -144,7 +150,8 @@ namespace Domain
                         string _customerTelephone = reader["CustomerTelephone"].ToString();
                         string _customerZip = reader["CustomerZip"].ToString();
                         string _customerTown = reader["CustomerTown"].ToString();
-                        customers.Add(new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown));
+                        string _customerEmail = reader["Email"].ToString();
+                        customers.Add(new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown, _customerEmail));
                     }
                 }
             }
@@ -176,7 +183,8 @@ namespace Domain
                         string _customerTelephone = reader["CustomerTelephone"].ToString();
                         string _customerZip = reader["CustomerZip"].ToString();
                         string _customerTown = reader["CustomerTown"].ToString();
-                        customer = new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown);
+                        string _customerEmail = reader["Email"].ToString();
+                        customer = new Customer(_customerID, _companyName, _customerAddress, _customerTelephone, _customerZip, _customerTown, _customerEmail);
                     }
                 }
             }

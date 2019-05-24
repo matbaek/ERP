@@ -9,11 +9,13 @@
     <Grid>
         <Label Content="Søg efter kunde" HorizontalAlignment="Left" Margin="106,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Firma navn" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="152,34,0,0" VerticalAlignment="Top"/>
         <Label Content="Adresse" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.683,0.55"/>
         <Label Content="Telefon" HorizontalAlignment="Left" Margin="152,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Postnr" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.683,0.55"/>
         <Label Content="By" HorizontalAlignment="Left" Margin="155,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.683,0.55"/>
-        <TextBox x:Name="TextBoxCompanyName" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
+        <TextBox x:Name="TextBoxCompanyName" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="TextBoxCustomerEmail" HorizontalAlignment="Left" Height="23" Margin="152,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="TextBoxCustomerAddress" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="TextBoxCustomerTelephone" HorizontalAlignment="Left" Height="23" Margin="152,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="TextBoxCustomerZip" HorizontalAlignment="Left" Height="23" Margin="10,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>

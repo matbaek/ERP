@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 namespace ERP.Accounting
 {
     /// <summary>
-    /// Interaction logic for WindowMakeCreditNota.xaml
+    /// Interaction logic for WindowSendInvoice.xaml
     /// </summary>
-    public partial class WindowMakeCreditNota : Window
+    public partial class WindowSendInvoice : Window
     {
         private OrderlineRepository orderlineRepository = new OrderlineRepository();
         private ProductRepository productRepository = new ProductRepository();
         private InvoiceRepository invoiceRepository = new InvoiceRepository();
         private Invoice invoice = new Invoice();
-        public WindowMakeCreditNota(Invoice invoice)
+        public WindowSendInvoice(Invoice invoice)
         {
             InitializeComponent();
             this.invoice = invoice;
@@ -37,22 +37,13 @@ namespace ERP.Accounting
             TextBoxTotalPrice.Text = invoice.Order.TotalPrice.ToString();
         }
 
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void ButtonSend_Click(object sender, RoutedEventArgs e)
         {
             WindowShowDialog wsd = new WindowShowDialog();
 
-            invoice.CreditNota = true;
-            List<Orderline> orderlines = orderlineRepository.DisplayOrderlines(invoice.Order);
-            for (int i = 0; i < orderlines.Count; i++)
-            {
-                Product product = orderlines[i].Product;
-                product.ProductAmount += orderlines[i].Amount;
-                productRepository.EditProduct(product);
-                orderlineRepository.DeleteOrderline(orderlines[i].OrderlineNumber);
-            }
-            invoiceRepository.EditInvoice(invoice);
+            invoiceRepository.SendInvoice(invoice);
 
-            wsd.LabelShowDialog.Content = "Kreditnota blev dannet";
+            wsd.LabelShowDialog.Content = "Ikke implementeret endnu!";
             wsd.ShowDialog();
 
             this.Close();

@@ -1,0 +1,39 @@
+﻿<Window x:Class="ERP.Accounting.WindowSendInvoice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP.Accounting"
+        mc:Ignorable="d"
+        Title="Send faktura" Height="400" Width="472"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView Margin="10,144,23,78" Name="Orderlines">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Produkt navn" Width="250" DisplayMemberBinding="{Binding Product.ProductName}" />
+                    <GridViewColumn Header="Pris" Width="40" DisplayMemberBinding="{Binding Product.ProductPrice}" />
+                    <GridViewColumn Header="Antal" Width="40" DisplayMemberBinding="{Binding Amount}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="LabelAddInvoice" Content="Send faktura" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kunde" Margin="10,27,339,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label x:Name="LabelDateOfDelivery" Content="Leveringsdato" Margin="272,27,107,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxCustomer" Height="23" Margin="10,53,285,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
+        <DatePicker x:Name="TextBoxDateOfDelivery" Height="25" Margin="272,51,23,0" VerticalAlignment="Top" >
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Button x:Name="ButtonSend" Content="Send faktura" Margin="172,321,173,0" VerticalAlignment="Top" Click="ButtonSend_Click"/>
+        <TextBox x:Name="TextBoxFormOfDelivery" Height="24" Margin="10,107,285,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
+        <Label Content="Leveringsform" Margin="10,82,339,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxFormOfPayment" Height="24" Margin="272,109,23,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
+        <Label Content="Betalingsform" Margin="272,83,77,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <TextBox x:Name="TextBoxTotalPrice" Height="24" Margin="326,317,26,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True"/>
+        <Label Content="Pris" Margin="326,291,23,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+    </Grid>
+</Window>
