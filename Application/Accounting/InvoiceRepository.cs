@@ -36,5 +36,10 @@ namespace Application
         {
             return invoice.GetInvoice(invoiceID);
         }
+
+        public bool DisplayInvoiceFromOrder(int orderID)
+        {
+            return invoice.GetInvoiceFromOrder(orderID);
+        }
     }
 }

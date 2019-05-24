@@ -149,5 +149,31 @@ namespace Domain
 
             return invoice;
         }
+
+        public bool GetInvoiceFromOrder(int orderID)
+        {
+            bool InvoiceIsCreated = false;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("ShowInvoiceFromOrder", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("OrderID", orderID);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        InvoiceIsCreated = true;
+                    }
+                }
+            }
+
+            return InvoiceIsCreated;
+        }
     }
 }

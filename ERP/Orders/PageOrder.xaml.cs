@@ -24,6 +24,7 @@ namespace ERP.Orders
     public partial class PageOrder : Page
     {
         private OrderRepository orderRepository = new OrderRepository();
+        private InvoiceRepository invoiceRepository = new InvoiceRepository();
         private Order order;
         private List<Order> orders = new List<Order>();
 
@@ -49,7 +50,14 @@ namespace ERP.Orders
 
         private void ButtonEditOrder_Click(object sender, RoutedEventArgs e)
         {
-            if (order != null)
+            invoiceRepository.DisplayInvoiceFromOrder(order.OrderID);
+            if(invoiceRepository.DisplayInvoiceFromOrder(order.OrderID) == true)
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Der er allerede dannet en faktura på denne ordre!";
+                wsd.ShowDialog();
+            }
+            else if (order != null)
             {
                 WindowEditOrder weo = new WindowEditOrder(order);
                 weo.ShowDialog();
