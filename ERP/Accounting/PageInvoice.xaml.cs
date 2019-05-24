@@ -47,9 +47,24 @@ namespace ERP.Accounting
 
         private void ButtonSendInvoice_Click(object sender, RoutedEventArgs e)
         {
-            WindowSendInvoice wsi = new WindowSendInvoice(invoice);
-            wsi.ShowDialog();
-            Update();
+            if (invoice.Send == true)
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Faktura er allerede sendt!";
+                wsd.ShowDialog();
+            }
+            else if (invoice.InvoiceID != 0)
+            {
+                WindowSendInvoice wsi = new WindowSendInvoice(invoice);
+                wsi.ShowDialog();
+                Update();
+            }
+            else
+            {
+                WindowShowDialog wsd = new WindowShowDialog();
+                wsd.LabelShowDialog.Content = "Ingen faktura er valgt!";
+                wsd.ShowDialog();
+            }
         }
 
         private void ButtonMakeCreditNota_Click(object sender, RoutedEventArgs e)
@@ -66,7 +81,7 @@ namespace ERP.Accounting
                 wec.ShowDialog();
                 Update();
             }
-            else 
+            else
             {
                 WindowShowDialog wsd = new WindowShowDialog();
                 wsd.LabelShowDialog.Content = "Ingen faktura er valgt!";

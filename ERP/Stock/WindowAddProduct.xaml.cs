@@ -16,11 +16,13 @@ namespace ERP.Stock
         private ProductRepository productRepository = new ProductRepository();
         private RawProductRepository rawProductRepository = new RawProductRepository();
         private List<RawProduct> rawProducts = new List<RawProduct>();
+        private RawProduct rawProduct = new RawProduct();
 
         public WindowAddProduct()
         {
             InitializeComponent();
             rawProducts = rawProductRepository.DisplayRawProducts();
+            ComboBoxRawProduct.Items.Add("");
             for (int i = 0; i < rawProducts.Count; i++)
             {
                 ComboBoxRawProduct.Items.Add($"{rawProducts[i].RawProductName} ({rawProducts[i].RawProductWeight} kg)");
@@ -33,7 +35,7 @@ namespace ERP.Stock
             WindowShowDialog wsd = new WindowShowDialog();
             product.ProductName = TextBoxName.Text.ToString();
 
-            if (double.TryParse(TextBoxWeight.Text, out double resultWeight) && double.TryParse(TextBoxPrice.Text, out double resultPrice) && double.TryParse(TextBoxAmount.Text, out double resultAmount) && TextBoxDateOfPackaging.SelectedDate != null && TextBoxDateOfExpiration.SelectedDate != null)
+            if (double.TryParse(TextBoxWeightAfterLoss.Text, out double resultWeight) && double.TryParse(TextBoxPrice.Text, out double resultPrice) && double.TryParse(TextBoxAmount.Text, out double resultAmount) && TextBoxDateOfPackaging.SelectedDate != null && TextBoxDateOfExpiration.SelectedDate != null)
             {
                 product.ProductWeight = resultWeight;
                 product.ProductPrice = resultPrice;
@@ -42,6 +44,8 @@ namespace ERP.Stock
                 product.DateOfExpiration = DateTime.Parse(TextBoxDateOfExpiration.Text);
 
                 productRepository.AddProduct(product);
+                rawProduct.RawProductWeight -= double.Parse(TextBoxWeightAfterLoss.Text);
+                rawProductRepository.EditRawProduct(rawProduct);
                 wsd.LabelShowDialog.Content = "Varen blev tilføjet";
                 wsd.ShowDialog();
 
@@ -54,16 +58,46 @@ namespace ERP.Stock
             }
         }
 
+        private void CalculateAmountPerProduct(object sender, TextChangedEventArgs e)
+        {
+            double productWeight = 0;
+            double productAmount = 1;
+            if (TextBoxWeight.Text != "")
+            {
+                productWeight = double.Parse(TextBoxWeight.Text);
+            }
+            if (TextBoxAmount.Text != "")
+            {
+                productAmount = double.Parse(TextBoxAmount.Text);
+            }
+            double productWeightAfterLoss = (productWeight / 100) * (100 - double.Parse(TextBoxLoss.Text));
+            TextBoxWeightAfterLoss.Text = productWeightAfterLoss.ToString();
+            TextBoxWeightPerProduct.Text = (productWeightAfterLoss / productAmount).ToString();
+        }
+
         private void ComboBoxRawProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TextBoxName.Width = 181;
-            Loss.Visibility = Visibility.Visible;
-            TextBoxLoss.Visibility = Visibility.Visible;
-            TextBoxLoss.Text = "20";
+            int comboBoxNumber = ComboBoxRawProduct.SelectedIndex - 1;
+            if (comboBoxNumber != -1)
+            {
+                TextBoxName.Width = 181;
+                Loss.Visibility = Visibility.Visible;
+                TextBoxLoss.Visibility = Visibility.Visible;
+                TextBoxLoss.Text = "20";
 
-            string[] comboBoxRawProductWords = ComboBoxRawProduct.SelectedItem.ToString().Split('(');
-            TextBoxName.Text = comboBoxRawProductWords[0].Substring(0, comboBoxRawProductWords[0].Length - 1);
-            TextBoxWeight.Text = comboBoxRawProductWords[1].Substring(0, comboBoxRawProductWords[1].Length - 4);
+                rawProduct = rawProducts[comboBoxNumber];
+                TextBoxName.Text = rawProduct.RawProductName;
+                TextBoxWeight.Text = rawProduct.RawProductWeight.ToString();
+            }
+            else
+            {
+                TextBoxName.Width = 273;
+                Loss.Visibility = Visibility.Hidden;
+                TextBoxLoss.Visibility = Visibility.Hidden;
+
+                TextBoxName.Text = "";
+                TextBoxWeight.Text = "0";
+            }
         }
     }
 }
