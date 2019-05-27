@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Invoice : DB.Database
+    public class Invoice
     {
         //Property
         public int InvoiceID { get; set; }
@@ -38,7 +38,7 @@ namespace Domain
 
         public void AddInvoice(Order order, DateTime dateOfDelivery, string formOfDelivery, string formOfPayment)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -58,7 +58,7 @@ namespace Domain
 
         public void EditInvoice(int invoiceID, Order order, DateTime dateOfDelivery, string formOfDelivery, string formOfPayment, bool creditNota, bool send)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -87,7 +87,7 @@ namespace Domain
             List<Invoice> invoices = new List<Invoice>();
             Order tempOrder = new Order();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -120,7 +120,7 @@ namespace Domain
             Invoice invoice = new Invoice();
             Order tempOrder = new Order();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -153,7 +153,7 @@ namespace Domain
         public bool GetInvoiceFromOrder(int orderID)
         {
             bool InvoiceIsCreated = false;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 

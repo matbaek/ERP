@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Order : DB.Database
+    public class Order
     {
         //Property
         public int OrderID { get; set; }
@@ -33,7 +33,7 @@ namespace Domain
 
         public void AddOrder(Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -51,7 +51,7 @@ namespace Domain
 
         public void EditOrder(int orderID, Customer customer, DateTime dateOfPurchase, double totalPrice, bool active)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -70,7 +70,7 @@ namespace Domain
 
         public void DeleteOrder(int orderID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -88,7 +88,7 @@ namespace Domain
             List<Order> orders = new List<Order>();
             Customer tempCustomer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -119,7 +119,7 @@ namespace Domain
             List<Order> orders = new List<Order>();
             Customer tempCustomer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -152,7 +152,7 @@ namespace Domain
             List<Order> orders = new List<Order>();
             Customer tempCustomer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -189,7 +189,7 @@ namespace Domain
             Order order = new Order();
             Customer tempCustomer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -220,7 +220,7 @@ namespace Domain
         {
             int newOrderID = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 

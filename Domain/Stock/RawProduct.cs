@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class RawProduct : DB.Database
+    public class RawProduct
     {
         //Property
         public int RawProductID { get; set; }
@@ -28,7 +28,7 @@ namespace Domain
 
         public void AddRawProduct(string rawProductName, double rawProductWeight, DateTime dateOfPurchase)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -45,7 +45,7 @@ namespace Domain
 
         public void EditRawProduct(int rawProductID, string rawProductName, double rawProductWeight, DateTime dateOfPurchase)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -63,7 +63,7 @@ namespace Domain
 
         public void DeleteRawProduct(int rawProductID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -80,7 +80,7 @@ namespace Domain
         {
             List<RawProduct> rawProducts = new List<RawProduct>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -110,7 +110,7 @@ namespace Domain
         {
             List<RawProduct> rawProducts = new List<RawProduct>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -142,7 +142,7 @@ namespace Domain
         {
             RawProduct rawProduct = new RawProduct();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 

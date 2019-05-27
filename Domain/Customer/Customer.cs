@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Customer : DB.Database
+    public class Customer
     {
         //Property
         public int CustomerID{ get; set; }
@@ -34,7 +34,7 @@ namespace Domain
 
         public void AddCustomer(string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -54,7 +54,7 @@ namespace Domain
 
         public void EditCustomer(int customerID, string companyName, string customerAddress, string customerTelephone, string customerZip, string customerTown, string customerEmail)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -75,7 +75,7 @@ namespace Domain
 
         public void DeleteCustomer(int customerID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -92,7 +92,7 @@ namespace Domain
         {
             List<Customer> customers = new List<Customer>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -124,7 +124,7 @@ namespace Domain
         {
             List<Customer> customers = new List<Customer>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -163,7 +163,7 @@ namespace Domain
         {
             Customer customer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 

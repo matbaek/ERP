@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Orderline : DB.Database
+    public class Orderline
     {
         public int OrderlineNumber { get; set; }
         public int OrderID { get; set; }
@@ -31,7 +31,7 @@ namespace Domain
 
         public void AddOrderline(int orderlineNumber, int orderID, Product product, double amount)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -48,7 +48,7 @@ namespace Domain
 
         public void EditOrderline(int orderlineNumber, int orderID, Product product, double amount)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -74,7 +74,7 @@ namespace Domain
             List<Orderline> orderlines = new List<Orderline>();
             Product tempProduct = new Product();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
@@ -102,7 +102,7 @@ namespace Domain
 
         public void DeleteOrderline(int orderlineNumber)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Database.Instance.ConnectionString))
             {
                 connection.Open();
 
